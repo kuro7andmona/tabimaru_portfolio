@@ -6,6 +6,8 @@ Rails.application.routes.draw do
   sessions: 'public/sessions'
 }
 
+ scope module: :public do
+
 #管理者用
   devise_for :admins, skip: [:registrations, :passwords], controllers: {
   sessions: "admin/sessions"
