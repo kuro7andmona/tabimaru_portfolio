@@ -13,12 +13,15 @@ Rails.application.routes.draw do
    get 'about' => 'homes#about'
 
    get 'users' => 'users#index'
-   get 'users/new' => 'users#new'
+   #get 'users/new' => 'users#new'
    get 'users/mypage' => 'users#show'
    get 'users/edit' => 'users#edit'
    patch 'users/update' => 'users#update'
 
-   resources :bookmark, only[:index, :destoroy]
+   resources :trip_articles
+   resources :comments, only: [:create, :destroy]
+
+   #resources :bookmark, only[:index, :destoroy]
 
   end
 #管理者用

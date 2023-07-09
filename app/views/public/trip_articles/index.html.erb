@@ -1,0 +1,16 @@
+<h2>あなたの素敵な旅の思い出を共有しましょう</h2>
+<%= link_to '新規投稿', new_trip_article_path %>
+
+<% @trip_articles.each do |trip_article| %>
+
+<%= image_tag trip_article.user.get_image(30,30) %>
+<%= trip_article.user.name %>
+<p><%= image_tag trip_article.get_image(200,200) %></p>
+<p>コメント<%#= @post_image.post_comments.count %>件</p>
+<p><%= link_to 'show', trip_article_path(trip_article) %></p>
+<p><%= trip_article.title %></p>
+<p><%= trip_article.text %></p>
+<p><%= trip_article.created_at.strftime('%Y/%m/%d') %></p>
+
+<% end %>
+
