@@ -1,0 +1,25 @@
+
+
+
+ <%= image_tag @trip_article.user.get_image(30,30) %>
+ <%= @trip_article.user.name %>
+ <p><%= image_tag @trip_article.get_image(200,200) %></p>
+ <p><%= @trip_article.title %></p>
+ <p><%= @trip_article.text %></p>
+<p><%= @trip_article.created_at.strftime('%Y/%m/%d') %></p>
+
+
+
+<% @trip_article.comments.each do |comment| %>
+    <p><%= image_tag comment.user.get_image(30,30) %></p>
+    <%= comment.user.name %>
+    <%= comment.created_at.strftime('%Y/%m/%d') %><%= comment.comment %>
+    <% if comment.user == current_user %>
+      <%= link_to "削除",  trip_article_comment_path(trip_article_comment), method: :delete %>
+    <% end %>
+<% end %>
+
+<%= form_with model: [@trip_article, @comment], url: trip_article_path(@trip_article) do |f| %>
+    <%= f.text_area :comment, rows: '5', placeholder: "コメントをここに" %>
+    <%= f.submit "送信する" %>
+<% end %>

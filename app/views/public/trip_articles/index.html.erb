@@ -6,7 +6,7 @@
 <%= image_tag trip_article.user.get_image(30,30) %>
 <%= trip_article.user.name %>
 <p><%= image_tag trip_article.get_image(200,200) %></p>
-<p>コメント<%#= @post_image.post_comments.count %>件</p>
+<p>コメント<%= link_to trip_article.comments.count, trip_article_path(trip_article) %>件</p>
 <p><%= link_to 'show', trip_article_path(trip_article) %></p>
 <p><%= trip_article.title %></p>
 <p><%= trip_article.text %></p>

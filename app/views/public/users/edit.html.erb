@@ -1,1 +1,10 @@
 <h2>ユーザー情報編集</h2>
+<%= form_with model: @user do |f| %>
+<p>name</p>
+<%= f.text_field :name %>
+
+<p>introduction</p>
+<%= f.text_area :introduction %>
+
+<%= f. submit '更新' %>
+<% end %>

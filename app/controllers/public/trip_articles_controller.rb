@@ -33,7 +33,7 @@ class Public::TripArticlesController < ApplicationController
   private
 
   def trip_article_params
-    params.require(:trip_article).permit(:title, :text, :image, :user_id)
+    params.require(:trip_article).permit(:title, :text, :image, :user_id, :comment)
   end
 
 end

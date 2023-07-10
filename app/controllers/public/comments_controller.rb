@@ -1,17 +1,22 @@
 class Public::CommentsController < ApplicationController
-  
+
   def create
-    post_image = PostImage.find(params[:post_image_id])
-    comment = current_user.post_comments.new(post_comment_params)
-    comment.post_image_id = post_image.id
+    @trip_article = TripArticle.find(params[:trip_article_id])
+    @comment = @trip_article.comments.new(comment_params)
+    @comment.user_id = current_user.id
     comment.save
-    redirect_to trip_article(@trip_article)
+    render trip_article(@trip_article)
   end
+
+   def destroy
+    Comment.find(params[:id]).destroy
+    redirect_to trip_article_path(params[:trip_article_id])
+   end
 
   private
 
   def comment_params
-    params.require(:comment).permit(:comment)
+    params.require(:comment).permit(:comment, :user_id, :trip_article_id)
   end
 
 end

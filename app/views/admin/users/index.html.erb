@@ -1,0 +1,21 @@
+<h1>User index</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th></th>
+      <th>name</th>
+      <th>e-mail</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+    <% @users.each do |user| %>
+     <td><%= image_tag user.get_image(30,30) %></td>
+     <td><%= user.name %></td>
+     <td><%= user.email %></td>
+     <td><%= link_to '削除', admin_users_path %></td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>

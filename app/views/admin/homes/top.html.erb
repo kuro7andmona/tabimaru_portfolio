@@ -1,0 +1,5 @@
+<h1>管理者</h1>
+<%= link_to 'Log out', destroy_admin_session_path, method: :delete %>
+
+<p><%= link_to 'ユーザー管理', admin_users_path %></p>
+<p><%= link_to 'コメント管理', admin_comment_index_path %></p>
