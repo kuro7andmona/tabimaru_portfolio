@@ -3,9 +3,9 @@
 
 <% @trip_articles.each do |trip_article| %>
 
-<p><%= image_tag trip_article.user.get_image(30,30) %>
+<p><%= image_tag trip_article.user.get_image(50,50) %>
 <%= trip_article.user.nickname %></p>
-<p><%= image_tag trip_article.get_image(200,200) %></p>
+<p><%= image_tag trip_article.get_image(400,500) %></p>
 <p>コメント<%= link_to trip_article.comments.count, trip_article_path(trip_article) %>件</p>
 <p><%= link_to 'show', trip_article_path(trip_article) %></p>
 <p><%= trip_article.title %></p>

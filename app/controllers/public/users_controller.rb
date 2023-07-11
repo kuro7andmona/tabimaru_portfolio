@@ -6,6 +6,7 @@ class Public::UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    @trip_article = TripArticle.all
   end
 
   def edit
@@ -15,7 +16,7 @@ class Public::UsersController < ApplicationController
   def update
     @user = User.find(params[:id])
     @user.update(user_params)
-    redirect_to users_mypage_path(user_mypage)
+    redirect_to users_mypage_path(@user)
   end
 
   private

@@ -9,10 +9,24 @@
       <th><%= @user.nickname %></th>
     </tr>
     <tr>
-      <th>introduction</th>
+      <th>comment</th>
       <th><%= @user.introduction %></th>
     </tr>
   </tbody>
 </table>
 <%= link_to '編集', edit_user_path(@user) %>
 <%#= link_to 'likes', %>
+
+<% @trip_articles.each do |trip_article| %>
+
+<%= trip_article.user.nickname %></p>
+<p><%= image_tag trip_article.get_image(400,500) %></p>
+<p>コメント<%= link_to trip_article.comments.count, trip_article_path(trip_article) %>件</p>
+<p><%= link_to 'show', trip_article_path(trip_article) %></p>
+<p><%= trip_article.title %></p>
+<p><%= trip_article.text %></p>
+<p><%= trip_article.created_at.strftime('%Y/%m/%d') %></p>
+<p><%= link_to 'edit', edit_trip_article_path(trip_article.id) %></p>
+
+<% end %>
+
