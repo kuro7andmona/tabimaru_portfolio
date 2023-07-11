@@ -21,9 +21,13 @@ class Public::TripArticlesController < ApplicationController
   end
 
   def edit
+    @trip_article = TripArticle.find(params[:id])
   end
 
   def update
+    trip_article = TripArticle.find(params[:id])
+    trip_article.update(trip_article_params)
+    redirect_to trip_article(@trip_article)
   end
 
   def destoroy

@@ -2,13 +2,13 @@
 <table>
   <tr>
     <% @users.each do |user| %>
-    <td><%= link_to users_mypage(@users) do %>
-          <%= image_tag current_user.get_image(30,30) %>
+    <td><%= link_to users_mypage_path(user.id) do %>
+         <%= image_tag user.get_image(30,30) %>
         <% end %>
     </td>
-
-    <td><%= current_user.name %></td>
-    <td><%= current_user.introduction %></td>
+    <td><%= user.nickname %></td>
+    <td><%= user.introduction %></td>
+    </tr>
    <% end %>
-  </tr>
+
 </table>

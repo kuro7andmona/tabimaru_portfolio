@@ -5,6 +5,7 @@
     <tr>
       <th></th>
       <th>name</th>
+      <th>nickname</th>
       <th>e-mail</th>
     </tr>
   </thead>
@@ -13,9 +14,12 @@
     <% @users.each do |user| %>
      <td><%= image_tag user.get_image(30,30) %></td>
      <td><%= user.name %></td>
+     <td><%= user.nickname %></td>
      <td><%= user.email %></td>
      <td><%= link_to '削除', admin_users_path %></td>
     </tr>
     <% end %>
   </tbody>
 </table>
+
+<%=link_to 'Top', admin_path %>

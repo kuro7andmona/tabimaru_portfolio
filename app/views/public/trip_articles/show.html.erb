@@ -15,11 +15,11 @@
     <%= comment.user.name %>
     <%= comment.created_at.strftime('%Y/%m/%d') %><%= comment.comment %>
     <% if comment.user == current_user %>
-      <%= link_to "削除",  trip_article_comment_path(trip_article_comment), method: :delete %>
+      <%= link_to "削除",  trip_article_comment_path(@trip_article.id,comment.id), method: :delete, "data-confirm" => "本当に削除しますか？" %>
     <% end %>
 <% end %>
 
-<%= form_with model: [@trip_article, @comment], url: trip_article_path(@trip_article) do |f| %>
+<%= form_with model: [@trip_article, @comment] do |f| %>
     <%= f.text_area :comment, rows: '5', placeholder: "コメントをここに" %>
     <%= f.submit "送信する" %>
 <% end %>

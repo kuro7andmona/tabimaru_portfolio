@@ -13,10 +13,9 @@ Rails.application.routes.draw do
    get 'about' => 'homes#about'
 
    get 'users' => 'users#index'
-   #get 'users/new' => 'users#new'
-   get 'users/mypage' => 'users#show'
-   get 'users/edit' => 'users#edit'
-   patch 'users/update' => 'users#update'
+   get 'users/mypage/:id' => 'users#show', as: 'users_mypage'
+   get 'users/:id/edit' => 'users#edit', as: 'edit_user'
+   patch 'users/:id' => 'users#update', as: 'update_user'
 
    resources :trip_articles do
      resources :comments, only: [:create, :destroy]
@@ -35,6 +34,8 @@ namespace :admin do
   get '/' => 'homes#top'
 
   resources :users, only: [:index, :destroy]
-  resources :comment, only: [:index, :destroy]
+  resources :trip_article, only: [:destroy] do
+    resources :comments, only: [:index, :destroy]
+  end
 end
 end

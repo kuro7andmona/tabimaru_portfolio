@@ -4,8 +4,8 @@ class Public::CommentsController < ApplicationController
     @trip_article = TripArticle.find(params[:trip_article_id])
     @comment = @trip_article.comments.new(comment_params)
     @comment.user_id = current_user.id
-    comment.save
-    render trip_article(@trip_article)
+    @comment.save
+    redirect_to trip_article_path(@trip_article)
   end
 
    def destroy

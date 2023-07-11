@@ -1,11 +1,13 @@
 class Admin::CommentsController < ApplicationController
 
-  def create
-    @trip_article = TripArticle.find(params[:trip_article_id])
-    @comment = @trip_article.comments.new(comment_params)
-    @comment.user_id = current_user.id
-    comment.save
-    redirect_to admin_comment_index_path
+  def index
+    @trip_articles = TripArticle.all
+    @comments = Comment.all
+  end
+
+  def destroy
+    Comment.find(params[:id]).destroy
+    redirect_to admin_trip_article_comments_path
   end
 
   private
