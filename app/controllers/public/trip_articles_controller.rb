@@ -17,6 +17,7 @@ class Public::TripArticlesController < ApplicationController
 
   def index
     @trip_articles = TripArticle.page(params[:page])
+    @user = current_user
   end
 
   def show
@@ -46,7 +47,7 @@ class Public::TripArticlesController < ApplicationController
   private
 
   def trip_article_params
-    params.require(:trip_article).permit(:title, :text, :image, :user_id, :comment_id, :like_id)
+    params.require(:trip_article).permit(:title, :text, :image, :user_id, :comment_id, :like)
   end
 
 end

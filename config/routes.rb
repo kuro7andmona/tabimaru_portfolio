@@ -19,12 +19,11 @@ Rails.application.routes.draw do
 
    resources :trip_articles do
      resources :comments, only: [:create, :destroy]
-     resources :likes, only: [:index, :create, :destoroy]
+     resources :likes, only: [:create, :destoroy]
    end
-
-
-
-  end
+   
+   resources :likes, only: [:index]
+ end
 #管理者用
   devise_for :admin, skip: [:registrations, :passwords], controllers: {
    sessions: "admin/sessions"

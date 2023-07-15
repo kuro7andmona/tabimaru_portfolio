@@ -16,7 +16,7 @@
         <li><%= link_to 'Top', root_path %></li>
         <li><%= link_to 'My page', users_mypage_path(current_user.id) %></li>
         <li><%= link_to 'users', users_path %></li>
-        <li><%= link_to 'bookmark', new_user_session_path %></li>
+        <li><%= link_to 'bookmark',  likes_path(id: current_user.id) %></li>
         <li><%= link_to 'index', trip_articles_path %></li>
         <li><%= link_to 'Log out', destroy_user_session_path, method: :delete %></li>
       <% elsif admin_signed_in? %>

@@ -1,0 +1,16 @@
+
+<%= @user.nickname %>さんのお気に入り
+
+<% if @likes.length != 0 %>
+  <% @likes.each do |trip_article| %>
+   <% if trip_article.image.present? %>
+    <%= image_tag trip_article.get_image(400,500) %>
+   <% else %>
+     <%= image_tag "no_image.png" %>
+   <% end %>
+     <%= link_to trip_article.title, trip_article_path(trip_article) %>
+  <% end %>
+<% else %>
+お気に入り登録はされていません。
+<% end %>
+
