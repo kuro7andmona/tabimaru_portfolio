@@ -2,8 +2,8 @@ Rails.application.routes.draw do
 
  #ユーザー用
   devise_for :users, skip: [:passwords], controllers: {
-  registrations: "public/registrations",
-  sessions: 'public/sessions'
+   registrations: "public/registrations",
+   sessions: 'public/sessions'
 }
 
  scope module: :public do
@@ -19,14 +19,15 @@ Rails.application.routes.draw do
 
    resources :trip_articles do
      resources :comments, only: [:create, :destroy]
+     resources :likes, only: [:index, :create, :destoroy]
    end
 
-   #resources :bookmark, only[:index, :destoroy]
+
 
   end
 #管理者用
   devise_for :admin, skip: [:registrations, :passwords], controllers: {
-  sessions: "admin/sessions"
+   sessions: "admin/sessions"
 }
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 namespace :admin do

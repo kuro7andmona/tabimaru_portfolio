@@ -1,3 +1,6 @@
+<div>
+<%= flash[:notice] %>
+</div>
 
 <%= form_with model: @trip_artcle, url: trip_article_path(@trip_article.id), method: :patch do |f| %>
 

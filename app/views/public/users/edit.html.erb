@@ -1,5 +1,9 @@
 <h2>ユーザー情報編集</h2>
 <%= form_with model: @user, url: update_user_path, method: :patch do |f| %>
+
+<p>Image</p>
+ <%= f.file_field :image, placeholder: "プロフィール画像", accept: "image/*" %>
+
 <p>nickname</p>
 <%= f.text_field :nickname %>
 

@@ -5,8 +5,10 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
 has_one_attached :image
-has_many :trip_articles
+has_many :trip_articles #旅行記事
 has_many :comments, dependent: :destroy
+has_many :likes #お気に入り機能
+
 validates :nickname, presence: true
 validates :name, presence: true
 

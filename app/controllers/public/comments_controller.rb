@@ -2,10 +2,13 @@ class Public::CommentsController < ApplicationController
 
   def create
     @trip_article = TripArticle.find(params[:trip_article_id])
-    @comment = @trip_article.comments.new(comment_params)
-    @comment.user_id = current_user.id
-    @comment.save
+    comment = current_user.comments.new(comment_params)
+    comment.trip_article_id = @trip_article.id
+    if comment.save
     redirect_to trip_article_path(@trip_article)
+    else
+      redirect_to root_path
+    end
   end
 
    def destroy
@@ -16,7 +19,7 @@ class Public::CommentsController < ApplicationController
   private
 
   def comment_params
-    params.require(:comment).permit(:comment, :user_id, :trip_article_id)
+     params.require(:comment).permit(:comment, :trip_article, :user_id)
   end
 
 end

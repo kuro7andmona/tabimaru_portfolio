@@ -6,7 +6,7 @@ class Public::UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    @trip_article = TripArticle.all
+    @trip_articles = TripArticle.all
   end
 
   def edit
