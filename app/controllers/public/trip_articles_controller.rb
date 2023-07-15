@@ -1,5 +1,5 @@
 class Public::TripArticlesController < ApplicationController
-
+ before_action :authenticate_user!
   def new
     @trip_article = TripArticle.new
   end

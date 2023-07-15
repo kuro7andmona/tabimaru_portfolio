@@ -22,7 +22,7 @@
       <% elsif admin_signed_in? %>
         <li><%= link_to 'Top', admin_path %></li>
         <li><%= link_to 'User index', admin_users_path %></li>
-        <li><%= link_to 'Post', admin_trip_article_comments_path %></li>
+        <li><%= link_to 'Post', admin_comments_path %></li>
 
        <% else %>
          <li><%= link_to 'Top', root_path %></li>

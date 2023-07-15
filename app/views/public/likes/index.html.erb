@@ -1,16 +1,20 @@
 
-<%= @user.nickname %>さんのお気に入り
-
+<h1><%= @user.nickname %>さんのお気に入り</h1>
+<div>
 <% if @likes.length != 0 %>
+</div>
   <% @likes.each do |trip_article| %>
+  <div>
    <% if trip_article.image.present? %>
-    <%= image_tag trip_article.get_image(400,500) %>
+    <%= image_tag trip_article.get_image(100,100) %>
    <% else %>
      <%= image_tag "no_image.png" %>
    <% end %>
-     <%= link_to trip_article.title, trip_article_path(trip_article) %>
+      <%= link_to trip_article.title, trip_article_path(trip_article) %>
   <% end %>
+  </div>
 <% else %>
 お気に入り登録はされていません。
 <% end %>
+
 

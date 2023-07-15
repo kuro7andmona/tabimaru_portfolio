@@ -1,5 +1,5 @@
 class Admin::CommentsController < ApplicationController
-
+ before_action :authenticate_admin!
   def index
     @trip_articles = TripArticle.all
     @comments = Comment.all
@@ -7,12 +7,12 @@ class Admin::CommentsController < ApplicationController
 
   def destroy
     Comment.find(params[:id]).destroy
-    redirect_to admin_trip_article_comments_path
+    redirect_to admin_comments_path
   end
 
   private
 
   def comment_params
-    params.require(:comment).permit(:comment,:user_id, :trip_article_id)
+    params.require(:comment)
   end
 end

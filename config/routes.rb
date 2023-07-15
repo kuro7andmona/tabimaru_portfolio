@@ -21,7 +21,7 @@ Rails.application.routes.draw do
      resources :comments, only: [:create, :destroy]
      resources :likes, only: [:create, :destoroy]
    end
-   
+
    resources :likes, only: [:index]
  end
 #管理者用
@@ -34,8 +34,8 @@ namespace :admin do
   get '/' => 'homes#top'
 
   resources :users, only: [:index, :destroy]
-  resources :trip_article, only: [:destroy] do
-    resources :comments, only: [:index, :destroy]
-  end
+  resources :trip_article, only: [:destroy]
+  resources :comments, only: [:index, :destroy]
+
 end
 end
