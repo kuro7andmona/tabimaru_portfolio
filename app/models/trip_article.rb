@@ -2,6 +2,8 @@ class TripArticle < ApplicationRecord
 
   has_one_attached :image
   belongs_to :user
+  belongs_to :prefecture
+  belongs_to :season
   has_many :comments, dependent: :destroy
   has_many :likes, dependent: :destroy #お気に入り機能
 

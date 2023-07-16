@@ -61,6 +61,6 @@ gem 'image_processing', '~> 1.2'
 
 gem 'kaminari','~> 1.2.1'
 
-gem 'active_hash'
+gem 'active_hash', '~> 3.0.0'
 
 gem 'jquery-rails'

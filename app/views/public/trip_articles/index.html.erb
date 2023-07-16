@@ -2,6 +2,8 @@
   <%= flash[:notice] %>
 </div>
 
+ <%= render "public/searches/searches" %>
+
 <h2>あなたの素敵な旅の思い出を共有しましょう</h2>
 <%= link_to '新規投稿', new_trip_article_path %>
 
@@ -13,6 +15,8 @@
   <p><%= link_to 'show', trip_article_path(trip_article) %></p>
   <p><%= trip_article.title %></p>
   <p><%= trip_article.text %></p>
+  <p><%= trip_article.prefecture.name %></p>
+  <p><%= trip_article.season.name %></p>
   <p><%= trip_article.created_at.strftime('%Y/%m/%d') %></p>
   <% if current_user != trip_article.user %>
     <div id="like_buttons_<%= trip_article.id %>" >

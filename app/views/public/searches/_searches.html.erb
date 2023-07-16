@@ -1,0 +1,10 @@
+<% if user_signed_in? %>
+  <div class="search_form">
+    <%= form_with url: search_path, local: true, method: :get do |f| %>
+      <%= f.text_field :keyword, value: params[:keyword] %>
+      <%= f.select :model_name, options_for_select([["都道府県", 'prefecture'], ["季節", 'season']], selected: params[:model_name]) %>
+      <%= f.select :search_kind, options_for_select([["完全一致","perfect_match"], ["部分一致","partinal_match"]], selected: params[:search_kind]) %>
+      <%= f.submit "検索", class: "btn btn-secondary" %>
+    <% end %>
+  </div>
+<% end %>
