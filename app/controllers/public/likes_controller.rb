@@ -9,26 +9,28 @@ class Public::LikesController < ApplicationController
   end
 
   def create
-    @like = current_user.likes.build(like_params)
-    @trip_article = @like.trip_article
-    if @like.valid?
-      @like.save
-      redirect_to trip_articles_path(@trip_article)
+    @trip_article = TripArticle.find(params[:trip_article_id])
+    like = @trip_article.likes.build(user_id: current_user.id)
+    if like.save
+    else
+      redirect_back fallback_location: root_path
     end
   end
 
   def destroy
-    @like = Like.find(params[:id])
-    @trip_article = @like.trip_article
-    if @like.destroy
-      redirect_to trip_article_path(@trip_article)
+    @trip_article = TripArticle.find(params[:trip_article_id])
+    like =  current_user.likes.find(params[:id])
+    if like.present?
+      like.destroy
+    else
+      redirect_back fallback_location: root_path
     end
   end
 
   private
 
   def like_params
-    params.require(:like).permit(:trip_article_id, :user_id)
+    params.permit(:like)
   end
 
 end

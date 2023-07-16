@@ -9,7 +9,7 @@ class Public::TripArticlesController < ApplicationController
     @trip_article.user_id = current_user.id
     if @trip_article.save
       flash[:notice] = "投稿しました！"
-    redirect_to trip_articles_path
+      redirect_to trip_articles_path
     else
       render :index
     end
@@ -21,9 +21,9 @@ class Public::TripArticlesController < ApplicationController
   end
 
   def show
-     @trip_article = TripArticle.find(params[:id])
-     @comment = Comment.new
-     @comments = Comment.all
+    @trip_article = TripArticle.find(params[:id])
+    @comment = Comment.new
+    @comments = Comment.all
   end
 
   def edit
@@ -32,15 +32,15 @@ class Public::TripArticlesController < ApplicationController
 
   def update
     trip_article = TripArticle.find(params[:id])
-   if trip_article.update(trip_article_params)
-     flash[:notice] = "編集しました"
-    redirect_to trip_article(@trip_article)
-   else
-     render :edit
-   end
+    if trip_article.update(trip_article_params)
+      flash[:notice] = "編集しました"
+      redirect_to trip_article(@trip_article)
+    else
+      render :edit
+    end
   end
 
-  def destoroy
+  def destroy
 
   end
 

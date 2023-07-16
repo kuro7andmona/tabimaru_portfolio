@@ -19,7 +19,7 @@ Rails.application.routes.draw do
 
    resources :trip_articles do
      resources :comments, only: [:create, :destroy]
-     resources :likes, only: [:create, :destoroy]
+     resources :likes, only: [:create, :destroy]
    end
 
    resources :likes, only: [:index]

@@ -1,19 +1,18 @@
 <div>
-<% @trip_articles.each do |trip_article| %>
-　<%= image_tag trip_article.user.get_image(30,30) %>
-　<%= trip_article.user.name %>
- <p><%= image_tag trip_article.get_image(200,200) %></p>
- <p><%= trip_article.title %></p>
- <p><%= trip_article.text %></p>
- <%= trip_article.created_at.strftime('%Y/%m/%d') %>
-
- <%= link_to "投稿削除", admin_trip_article_path(trip_article.id), method: :delete, "data-confirm" => "投稿を削除しますか？" %>
- </div>
- <p><% trip_article.comments.each do |comment| %></p>
-  <%= comment.comment %>
-   <%= link_to "コメント削除", admin_comment_path(comment.id), method: :delete, "data-confirm" => "コメントを削除しますか？" %>
-<% end %>
-<% end %>
+  <% @trip_articles.each do |trip_article| %>
+    <%= image_tag trip_article.user.get_image(30,30) %>
+    <%= trip_article.user.name %>
+    <p><%= image_tag trip_article.get_image(200,200) %></p>
+    <p><%= trip_article.title %></p>
+    <p><%= trip_article.text %></p>
+    <%= trip_article.created_at.strftime('%Y/%m/%d') %>
+    <%= link_to "投稿削除", admin_trip_article_path(trip_article.id), method: :delete, "data-confirm" => "投稿を削除しますか？" %>
+</div>
+  <p><% trip_article.comments.each do |comment| %></p>
+        <%= comment.comment %>
+        <%= link_to "コメント削除", admin_comment_path(comment.id), method: :delete, "data-confirm" => "コメントを削除しますか？" %>
+      <% end %>
+  <% end %>
 
 <%=link_to 'Top', admin_path %>
 

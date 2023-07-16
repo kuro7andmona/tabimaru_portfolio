@@ -1,5 +1,5 @@
 class Admin::TripArticleController < ApplicationController
- before_action :authenticate_admin!
+  before_action :authenticate_admin!
   def destroy
     trip_article = TripArticle.find(params[:id])
     trip_article.destroy

@@ -1,20 +1,18 @@
 <div>
-<%= flash[:notice] %>
+  <%= flash[:notice] %>
 </div>
 
 <%= form_with model: @trip_artcle, url: trip_article_path(@trip_article.id), method: :patch do |f| %>
+  <%= image_tag @trip_article.user.get_image(30,30) %>
+  <%= @trip_article.user.name %>
+  <h4>画像</h4>
+    <%= f.file_field :image, accept: "image/*" %>
 
-<%= image_tag @trip_article.user.get_image(30,30) %>
- <%= @trip_article.user.name %>
- <h4>画像</h4>
-  <%= f.file_field :image, accept: "image/*" %>
+  <h4>タイトル</h4>
+    <%= f.text_field :title %>
 
- <h4>タイトル</h4>
-  <%= f.text_field :title %>
+  <h4>本文</h4>
+    <%= f.text_area :text %>
 
- <h4>本文</h4>
-  <%= f.text_area :text %>
-
-<%= f.submit '投稿'  %>
-
+    <%= f.submit '投稿'  %>
 <% end %>
