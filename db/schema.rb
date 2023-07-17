@@ -55,9 +55,9 @@ ActiveRecord::Schema.define(version: 2023_07_17_052459) do
   create_table "association_trip_articleand_tags", force: :cascade do |t|
     t.integer "trip_articl_id", null: false
     t.integer "tag_id", null: false
+    t.integer "tag_type", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["tag_id"], name: "index_association_trip_articleand_tags_on_tag_id"
     t.index ["trip_articl_id"], name: "index_association_trip_articleand_tags_on_trip_articl_id"
   end
 
@@ -90,12 +90,6 @@ ActiveRecord::Schema.define(version: 2023_07_17_052459) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "tags", force: :cascade do |t|
-    t.string "tag_type", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
   create_table "trip_articles", force: :cascade do |t|
     t.integer "user_id"
     t.integer "prefecture_id"
@@ -121,7 +115,6 @@ ActiveRecord::Schema.define(version: 2023_07_17_052459) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
-  add_foreign_key "association_trip_articleand_tags", "tags"
   add_foreign_key "association_trip_articleand_tags", "trip_articls"
   add_foreign_key "likes", "users"
 end

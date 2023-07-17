@@ -6,8 +6,8 @@ class TripArticle < ApplicationRecord
   belongs_to :season
   has_many :comments, dependent: :destroy
   has_many :likes, dependent: :destroy #お気に入り機能
-  has_many :association_post_and_tags, dependent: :destroy
-  has_many :tags, through: :association_post_and_tags
+  # has_many :association_post_and_tags, dependent: :destroy
+  # has_many :tags, through: :association_post_and_tags
 
   validates :title, presence: true
   validates :text, presence:true

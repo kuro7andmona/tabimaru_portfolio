@@ -8,6 +8,12 @@ class Public::TripArticlesController < ApplicationController
     @trip_article = TripArticle.new(trip_article_params)
     @trip_article.user_id = current_user.id
     if @trip_article.save
+      # if params[:trip_article][:prefecture_id].present?
+      #   AssociationTripArticleandTag.create(trip_articl_id: @trip_article, tag_id: params[:trip_article][:prefecture_id], tag_type: 0)
+      # end
+      # if params[:trip_article][:season_id].present?
+      #   AssociationTripArticleandTag.create(trip_articl_id: @trip_article, tag_id: params[:trip_article][:season_id], tag_type: 1)
+      # end
       flash[:notice] = "投稿しました！"
       redirect_to trip_articles_path
     else
@@ -72,7 +78,7 @@ class Public::TripArticlesController < ApplicationController
   private
 
   def trip_article_params
-    params.require(:trip_article).permit(:title, :text, :image, :user_id, :comment_id, :like, :season, :prefecture)
+    params.require(:trip_article).permit(:title, :text, :image, :user_id, :comment_id, :like, :prefecture_id, :season_id)
   end
 
 end
