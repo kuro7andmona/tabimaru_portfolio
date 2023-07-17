@@ -78,7 +78,7 @@ end
 
 if Rails.env.development?
   file_path = Rails.root.join('app/assets/images/no_image.jpg')
-  
+
   (1..5).each do |n|
     user = User.create!(
       name: "user_#{n}",
@@ -87,7 +87,7 @@ if Rails.env.development?
       password: "password",
       introduction: "text" * rand(3..5)
     )
-    
+
     (1..rand(1..3)).each do |m|
       trip_article = user.trip_articles.build(
         prefecture_id: prefectures.sample.id,

@@ -11,13 +11,31 @@ class Public::TripArticlesController < ApplicationController
       flash[:notice] = "投稿しました！"
       redirect_to trip_articles_path
     else
+       @trip_articles = TripArticle.all
+       @tags = Tag.all
+       @user = current_user
       render :index
     end
   end
 
   def index
-    @trip_articles = TripArticle.page(params[:page])
+    @trip_articles = TripArticle.all
     @user = current_user
+    @tags = Tag.all
+    @trip_articles = @trip_articles.where("text LIKE ? ",'%' + params[:search] + '%') if params[:search].present?
+    if params[:tag_ids].present?
+        trip_article_ids = []
+        params[:tag_ids].each do |key, value|
+            if value == "1"
+            Tag.find_by(name: key).posts.each do |p|
+            trip_article_ids << p.id
+            end
+            end
+        end
+    end
+
+    @trip_articles = @trip_articles.where(id: trip_article_ids) if trip_article_ids.present?
+    @trip_articles = @trip_articles.page(params[:page])
   end
 
   def show
@@ -40,6 +58,13 @@ class Public::TripArticlesController < ApplicationController
     end
   end
 
+  def search
+    @tag = Prefecture_names.all
+    @tags = Prefecture_season_names.all
+    @tag = Tag.find(params[:tag_id])
+    @trip_articles = @tag.trip_articles.all
+  end
+
   def destroy
 
   end
@@ -47,7 +72,7 @@ class Public::TripArticlesController < ApplicationController
   private
 
   def trip_article_params
-    params.require(:trip_article).permit(:title, :text, :image, :user_id, :comment_id, :like)
+    params.require(:trip_article).permit(:title, :text, :image, :user_id, :comment_id, :like, :season, :prefecture)
   end
 
 end

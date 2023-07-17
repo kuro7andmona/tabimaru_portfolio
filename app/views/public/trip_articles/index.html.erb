@@ -17,6 +17,8 @@
   <p><%= trip_article.text %></p>
   <p><%= trip_article.prefecture.name %></p>
   <p><%= trip_article.season.name %></p>
+  <p><%= trip_article.tags_type.seasons.name %></p>
+  <p><%= trip_article.tags_type.prefectures.name %></p>
   <p><%= trip_article.created_at.strftime('%Y/%m/%d') %></p>
   <% if current_user != trip_article.user %>
     <div id="like_buttons_<%= trip_article.id %>" >
