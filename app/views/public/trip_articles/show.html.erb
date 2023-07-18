@@ -14,7 +14,7 @@
     <%= comment.user.nickname %>
     <%= comment.created_at.strftime('%Y/%m/%d') %><%= comment.comment %>
     <% if comment.user == current_user %>
-      <%= link_to "削除",  trip_article_comment_path(@trip_article.id,comment.id), method: :delete, "data-confirm" => "本当に削除しますか？" %>
+      <%= link_to "削除",  trip_article_comment_path(@trip_article.id,comment.id), method: :delete, "data-confirm" => "コメントを削除しますか？" %>
     <% end %>
 <% end %>
 

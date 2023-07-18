@@ -1,21 +1,24 @@
 <h2>My page</h2>
 <h1>ユーザー情報</h1>
-<%= image_tag @user.get_image(30,30) %>
+<%= image_tag current_user.get_image(30,30) %>
 <table>
   <tbody>
     <tr></tr>
     <tr>
       <th>nickname</th>
-      <th><%= @user.nickname %></th>
+      <th><%= current_user.nickname %></th>
     </tr>
     <tr>
       <th>comment</th>
-      <th><%= @user.introduction %></th>
+      <th><%= current_user.introduction %></th>
     </tr>
   </tbody>
 </table>
+<div>
+  <%= flash[:notice] %>
+</div>
 <%= link_to '編集', edit_user_path(@user) %>
-<p><%= link_to 'bookmark', trip_article_likes_path(@trip_articles) %></p>
+<p><%= link_to 'bookmark', likes_path %></p>
 
 <% @trip_articles.each do |trip_article| %>
   <p><%= image_tag trip_article.user.get_image(50,50) %>
@@ -27,5 +30,5 @@
   <p><%= trip_article.text %></p>
   <p><%= trip_article.created_at.strftime('%Y/%m/%d') %></p>
   <p><%= link_to 'edit', edit_trip_article_path(trip_article) %></p>
+  <p><%= link_to 'delete', trip_article_path(trip_article.id), method: :delete,"data-confirm" =>  "投稿を削除しますか？" %></p>
 <% end %>
-

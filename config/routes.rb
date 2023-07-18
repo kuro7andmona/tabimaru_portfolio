@@ -5,6 +5,11 @@ Rails.application.routes.draw do
     registrations: "public/registrations",
     sessions: 'public/sessions'
   }
+  #ゲストログイン
+  devise_scope :user do
+    post 'users/guest_log_in', to: 'public/sessions#guest_log_in'
+  end
+
 
   scope module: :public do
 

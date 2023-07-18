@@ -1,5 +1,10 @@
 class Public::TripArticlesController < ApplicationController
  before_action :authenticate_user!
+ before_action :ensure_guest_user
+
+  def ensure_guest_user
+
+  end
   def new
     @trip_article = TripArticle.new
   end
@@ -72,6 +77,9 @@ class Public::TripArticlesController < ApplicationController
   end
 
   def destroy
+    trip_article = TripArticle.find(params[:id])
+    trip_article.destroy
+    redirect_to trip_article(trip_article)
 
   end
 
