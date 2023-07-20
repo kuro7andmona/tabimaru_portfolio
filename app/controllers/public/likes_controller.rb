@@ -2,7 +2,6 @@ class Public::LikesController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    # @user = current_user
     user = User.find(params[:id])
     likes = Like.where(user_id: user.id).pluck(:trip_article_id)
     @likes = TripArticle.find(likes)

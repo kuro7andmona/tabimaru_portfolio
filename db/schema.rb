@@ -52,13 +52,13 @@ ActiveRecord::Schema.define(version: 2023_07_17_052459) do
     t.index ["reset_password_token"], name: "index_admins_on_reset_password_token", unique: true
   end
 
-  create_table "association_trip_articleand_tags", force: :cascade do |t|
-    t.integer "trip_articl_id", null: false
+  create_table "association_trip_article_and_tags", force: :cascade do |t|
+    t.integer "trip_article_id", null: false
     t.integer "tag_id", null: false
     t.integer "tag_type", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["trip_articl_id"], name: "index_association_trip_articleand_tags_on_trip_articl_id"
+    t.index ["trip_article_id"], name: "index_association_trip_article_and_tags_on_trip_article_id"
   end
 
   create_table "comments", force: :cascade do |t|
@@ -115,6 +115,6 @@ ActiveRecord::Schema.define(version: 2023_07_17_052459) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
-  add_foreign_key "association_trip_articleand_tags", "trip_articls"
+  add_foreign_key "association_trip_article_and_tags", "trip_articles"
   add_foreign_key "likes", "users"
 end
