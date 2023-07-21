@@ -1,8 +1,6 @@
-
-<h1>Tabimaru</h1>
-
-<div class= "top">Have a nice trip!!</div>
-
-<div class= "top"><%= link_to 'Log in', new_user_session_path %></div>
-<div class= "top"><%= link_to "Log in guest", users_guest_log_in_path, method: :post %></div>
+<div class="jumbotron jumbotron-extend">
+  <h1 class= "site-name,display-4">Tabimaru</h1>
+  <p class= "lead">Have a nice trip!!</p>
+  <button type="button" class="btn btn-outline-secondary"><%= link_to 'Log in', new_user_session_path %></button>
+  <button type="button" class="btn btn-outline-secondary"><%= link_to "Log in guest", users_guest_log_in_path, method: :post %></button>
 </div>
