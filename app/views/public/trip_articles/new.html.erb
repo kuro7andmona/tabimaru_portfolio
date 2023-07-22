@@ -1,20 +1,51 @@
-<h1>新規投稿</h1>
-<%= form_with model: @trip_article, method: :post, local:true do |f| %>
+<div class= "conrainer-md">
+  <div class="row justify-content-center pt-4 text-right">
+    <h2>新規投稿</h2>
+    </div>
+    <%= form_with model: @trip_article, method: :post do |f| %>
 
-  <h4>画像</h4>
-  <%= f.file_field :image, accept: "image/*" %>
-
-  <h4>タイトル</h4>
-  <%= f.text_field :title %>
-
-  <h4>本文</h4>
-  <%= f.text_area :text %>
-
-  <h4>都道府県タグ</h4>
-  <%= f.select :prefecture_id, Prefecture.pluck(:name,:id), { include_blank: true, selected: 1 }, { id: "prefecture_id", class: "prefecture_class" } %>
-
-  <h4>季節</h4>
-  <%= f.select :season_id, Season.pluck(:name, :id), { include_blank: true, selected: 1 }, { id: "season_id", class: "season_class" } %>
-
-  <%= f.submit '投稿'  %>
-<% end %>
+  <div class="row justify-content-center pt-4 text-right">
+    <div class= "field">
+      <%= label :image , "画像"%>
+      <%= f.file_field :image, accept: "image/*" %>
+    </div>
+  </div>
+  <div class="row justify-content-center pt-4 text-right">
+    <div class= "field mr-5">
+      <dl class= "row">
+        <dt class= "col-4">
+        <%= f.label :title, "タイトル" %>
+        </dt>
+        <dd class="col-4">
+          <%= f.text_field :title %>
+        </dd>
+      </dl>
+    </div>
+  </div>
+  <div class="row justify-content-center pt-4 text-right">
+    <div class= "field mr-5">
+      <dl class= "row">
+        <dt class= "col-4">
+          <%= f.label :text, "本文" %>
+        </dt>
+        <dd class="col-4">
+          <%= f.text_area :text %>
+        </dd>
+      </dl>
+    </div>
+  </div>
+  <div class="row justify-content-center pt-4 text-right">
+    <div class= "field mr-4">
+      <%= f.label :prefecture_id, "都道府県" %>
+      <%= f.select :prefecture_id, Prefecture.pluck(:name,:id), { include_blank: true, selected: 1 }, { id: "prefecture_id", class: "prefecture_class" } %>
+    </div>
+     <div class= "field pr-3">
+      <%= f.label :season_id, "季節" %>
+      <%= f.select :season_id, Season.pluck(:name, :id), { include_blank: true, selected: 1 }, { id: "season_id", class: "season_class" } %>
+    </div>
+  </div>
+  <div class="actions text-center p-3">
+    <%= f.submit '投稿', class: "btn btn-outline-secondary"  %>
+  </div>
+  <% end %>
+</div>

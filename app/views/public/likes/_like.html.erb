@@ -1,5 +1,11 @@
 <% if trip_article.liked_by(current_user).blank? %>
-    <%= link_to "お気に入りに保存", trip_article_likes_path(trip_article), method: :post, remote: true  %>
+<%# お気に入りに保存 %>
+    <%= link_to  trip_article_likes_path(trip_article), method: :post, remote: true do  %>
+    <i class="far fa-star"></i>
+    <% end %>
 <% else %>
-    <%= link_to "保存済み", trip_article_like_path(trip_article,trip_article.liked_by(current_user)), method: :delete, remote: true %>
+<%# お気に入りに保存済み %>
+    <%= link_to trip_article_like_path(trip_article,trip_article.liked_by(current_user)), method: :delete, remote: true do %>
+   <i class="fas fa-star", style="color:orange"></i>
+    <% end %>
 <% end %>
