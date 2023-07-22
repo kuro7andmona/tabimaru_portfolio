@@ -4,26 +4,48 @@
 
  <%= render "public/searches/searches" %>
 
-<h2>あなたの素敵な旅の思い出を共有しましょう</h2>
-<%= link_to '新規投稿', new_trip_article_path %>
+<h2 class="text-center m-5 p-5">あなたの素敵な旅の思い出を共有しましょう</h2>
+<div class="text-center mx-auto">
+  <%= link_to '新規投稿', new_trip_article_path, class: "text-center btn btn-secondary " %>
+</div>
 
-<% @trip_articles.each do |trip_article| %>
-  <p><%= image_tag trip_article.user.get_image(50,50) %>
-  <%= trip_article.user.nickname %></p>
-  <p><%= image_tag trip_article.get_image(400,500) %></p>
-  <p>コメント<%= link_to trip_article.comments.count, trip_article_path(trip_article) %>件</p>
-  <p><%= link_to 'show', trip_article_path(trip_article) %></p>
-  <p><%= trip_article.title %></p>
-  <p><%= trip_article.text %></p>
-  <p><%= trip_article.prefecture.name %></p>
-  <p><%= trip_article.season.name %></p>
-  <p><%= trip_article.created_at.strftime('%Y/%m/%d') %></p>
-  <% if current_user != trip_article.user %>
-    <div id="like_buttons_<%= trip_article.id %>" >
-      <%= render "public/likes/like", trip_article: trip_article %>
+  <% @trip_articles.each do |trip_article| %>
+  <div class="row justify-content-center pt-4 border-dark col text-right">
+    <div class= "rounded-circle">
+      <%= image_tag trip_article.user.get_image(50,50) %>
+      </div>
+      <%= trip_article.user.nickname %>
+      </div>
+      <div class="row justify-content-center p-3">
+          <%= image_tag trip_article.get_image(400,500) %>
+      </div>
+      <div class="row justify-content-center">
+        コメント<%= link_to trip_article.comments.count, trip_article_path(trip_article) %>件
+        <%= link_to 'show', trip_article_path(trip_article) %>
+      </div>
+    <div class="row justify-content-center p-2">
+      <%= trip_article.title %>
+    </div>
+    <div class="row justify-content-center pb-2">
+      <%= trip_article.text %>
+    </div>
+    <div class="row justify-content-center p-4">
+      <i class="fas fa-map-marker-alt"></i><%= trip_article.prefecture.name %>
+     <i class="fas fa-tag"></i><%= trip_article.season.name %>
+    </div>
+    <div class="row justify-content-center">
+      <%= trip_article.created_at.strftime('%Y/%m/%d') %>
+    </div>
+    <div class="row justify-content-center pb-3">
+    <% if current_user != trip_article.user %>
+      <div id="like_buttons_<%= trip_article.id %>" >
+        <%= render "public/likes/like", trip_article: trip_article %>
+      </div>
+    <% end %>
     </div>
   <% end %>
-<% end %>
+  </div>
+</div>
 
 <%= paginate @trip_articles %>
 

@@ -5,20 +5,15 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
-    <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <script src="https://kit.fontawesome.com/d85941bf84.js" crossorigin="anonymous"></script>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
     <header>
-      <div class="hamburger">
-        <span></span>
-        <span></span>
-        <span></span>
-      </div>
-
-      <nav class="globalMenuSp">
+      <div id="hamburger">
         <ul>
           <% if user_signed_in? %>
             <li><%= link_to 'Top', root_path %></li>
@@ -38,10 +33,15 @@
             <li><%= link_to 'Log in', new_user_session_path %></li>
           <% end %>
         </ul>
-      </nav>
+      </div>
+      <div id="hm-icon">
+      <a class="menu-trigger" href="#">
+        <span></span>
+        <span></span>
+        <span></span>
+      </a>
+    </div>
     </header>
-    <script src="js/jquery.min.js"></script>
-    <script src="js/script.js"></script>
     <%= yield %>
   </body>
 </html>
