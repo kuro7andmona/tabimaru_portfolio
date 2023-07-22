@@ -1,14 +1,23 @@
-<h2>ユーザー情報編集</h2>
-<%= form_with model: @user, url: update_user_path, method: :patch do |f| %>
-
-<p>Image</p>
- <%= f.file_field :image, placeholder: "プロフィール画像", accept: "image/*" %>
-
-<p>nickname</p>
-<%= f.text_field :nickname %>
-
-<p>introduction</p>
-<%= f.text_area :introduction %>
-
-<%= f. submit '更新' %>
-<% end %>
+<h2 class="text-center m-5 p-5">ユーザー情報編集</h2>
+<div class= "conrainer-md">
+  <%= form_with model: @user, url: update_user_path, method: :patch do |f| %>
+  <div class="row justify-content-center pt-4">
+    <%= f.label :image, "画像" %>
+    <%= f.file_field :image, placeholder: "プロフィール画像", accept: "image/*" %>
+  </div>
+  <div class="row justify-content-center pt-4">
+    <div class= "field">
+      <%= f.label :nickname, "ニックネーム" %>
+      <%= f.text_field :nickname %>
+    </div>
+  </div>
+  <div class="row justify-content-center pt-4">
+    <div class= "field">
+      <%= f.label :introduction, "紹介" %>
+      <%= f.text_area :introduction %>
+    </div>
+  </div>
+  <div class="actions text-center p-3">
+    <%= f.submit '更新', class: "btn btn-outline-secondary" %>
+  <% end %>
+  </div>

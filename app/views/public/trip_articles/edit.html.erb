@@ -2,26 +2,33 @@
   <%= flash[:notice] %>
 </div>
 <div class= "conrainer-md">
-    <h2 class="text-center m-5 p-5">編集</h2>
+    <h2 class="text-center m-5 p-5">投稿編集</h2>
     <div class="row justify-content-center pt-4 text-right">
       <%= form_with model: @trip_artcle, url: trip_article_path(@trip_article.id), method: :patch do |f| %>
         <%= image_tag @trip_article.user.get_image(30,30) %>
         <%= @trip_article.user.name %>
     </div>
-    <div class= "field">
-      <%= f.label :image, "画像" %>
-      <%= f.file_field :image, accept: "image/*" %>
+    <div class="row justify-content-center pt-4">
+      <div class= "field">
+        <%= f.label :image, "画像" %>
+        <%= f.file_field :image, accept: "image/*" %>
+      </div>
     </div>
-    <div class= "field">
-      <%= f.label :title, "タイトル" %>
-      <%= f.text_field :title %>
+    <div class="row justify-content-center pt-4">
+      <div class= "field pr-3">
+        <%= f.label :title, "タイトル" %>
+        <%= f.text_field :title %>
+      </div>
     </div>
-    <div class= "field">
-      <%= f.label :text, "本文" %>
-      <%= f.text_area :text %>
+    <div class="row justify-content-center pt-4">
+      <div class= "field pr-3">
+        <%= f.label :text, "本文" %>
+        <%= f.text_area :text %>
+      </div>
     </div>
-
+    <div class="actions text-center p-3">
         <%= f.submit '投稿', class: "btn btn-outline-secondary"  %>
+        </div>
     <% end %>
     </div>
   </div>
