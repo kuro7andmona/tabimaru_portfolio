@@ -1,23 +1,26 @@
 <h2 class="text-center m-5 p-5">ユーザー情報編集</h2>
-<div class= "conrainer-md">
-  <%= form_with model: @user, url: update_user_path, method: :patch do |f| %>
-  <div class="row justify-content-center pt-4">
-    <%= f.label :image, "画像" %>
-    <%= f.file_field :image, placeholder: "プロフィール画像", accept: "image/*" %>
-  </div>
-  <div class="row justify-content-center pt-4">
-    <div class= "field">
-      <%= f.label :nickname, "ニックネーム" %>
-      <%= f.text_field :nickname %>
+<div class= "conrainer-md row justify-content-center">
+  <div class="col-10 col-sm-6">
+    <%= form_with model: @user, url: update_user_path, method: :patch do |f| %>
+    <table class="table table-borderless">
+      <tbody>
+      <tr>
+        <th><%= f.label :image, "画像" %></th>
+        <td><%= f.file_field :image, placeholder: "プロフィール画像", accept: "image/*" %></td>
+      </tr>
+      <tr>
+        <th><%= f.label :nickname, "ニックネーム" %></th>
+        <td><%= f.text_field :nickname, class: "w-100" %></td>
+      </tr>
+      <tr>
+        <th><%= f.label :introduction, "紹介" %></th>
+        <td><%= f.text_area :introduction %></td>
+      </tr>
+      </tbody>
+    </table>
+    <div class="actions text-right p-3">
+      <%= f.submit '更新', class: "btn btn-outline-secondary" %>
     </div>
+    <% end %>
   </div>
-  <div class="row justify-content-center pt-4">
-    <div class= "field">
-      <%= f.label :introduction, "紹介" %>
-      <%= f.text_area :introduction %>
-    </div>
-  </div>
-  <div class="actions text-center p-3">
-    <%= f.submit '更新', class: "btn btn-outline-secondary" %>
-  <% end %>
-  </div>
+</div>

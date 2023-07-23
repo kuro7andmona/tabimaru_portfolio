@@ -10,20 +10,38 @@
     </div>
     <div class="row justify-content-center pt-4">
       <div class= "field">
-        <%= f.label :image, "画像" %>
-        <%= f.file_field :image, accept: "image/*" %>
+        <dl class= "row">
+          <dt class= "col-3">
+            <%= f.label :image, "画像" %>
+          </dt>
+          <dd class="col-9">
+            <%= f.file_field :image, accept: "image/*" %>
+          </dd>
+        </dl>
       </div>
     </div>
     <div class="row justify-content-center pt-4">
       <div class= "field pr-3">
-        <%= f.label :title, "タイトル" %>
-        <%= f.text_field :title %>
+        <dl class= "row">
+          <dt class= "col-3">
+            <%= f.label :title, "タイトル" %>
+          </dt>
+          <dd class="col-9">
+            <%= f.text_field :title, placeholder: "タイトル" %>
+          </dd>
+        </dl>
       </div>
     </div>
     <div class="row justify-content-center pt-4">
       <div class= "field pr-3">
-        <%= f.label :text, "本文" %>
-        <%= f.text_area :text %>
+        <dl class= "row">
+          <dt class= "col-3">
+            <%= f.label :text, "本文" %>
+          </dt>
+          <dd class="col-9">
+            <%= f.text_area :text, placeholder: "本文" %>
+          </dd>
+        </dl>
       </div>
     </div>
     <div class="actions text-center p-3">

@@ -1,7 +1,14 @@
 // Place all the styles related to the public/trip_articles controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
-body {
-  background-image: image-url("hoge.jpg");
+.p00 { padding: 0; }
+.m00 { margin: 0; }
 
+.card{
+  max-width: 100%;
+    flex-shrink:0;
+}
+
+.trip-article-card .card {
+  padding: 0;
 }

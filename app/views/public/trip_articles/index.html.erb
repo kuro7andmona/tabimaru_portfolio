@@ -12,14 +12,15 @@
 
 
   <% @trip_articles.each do |trip_article| %>
-    <div class="row justify-content-center pt-4 text-right">
-      <div class="card">
-          <div class="card-header">
-            <div class= "rounded-circle">
-              <%= image_tag trip_article.user.get_image(50,50) %>
+    <div class="trip-article-card row justify-content-center pt-4 text-right">
+      <div class="card d-block col-12 col-sm-6">
+          <div class="card-header d-flex align-items-center">
+            <div class= "rounded-circle h-100">
+              <%= image_tag trip_article.user.get_image(60,60), class: "rounded-circle" %>
             </div>
-            <%= trip_article.user.nickname %>
+            <p class="m00 pl-2"><%= trip_article.user.nickname %></p>
           </div>
+          <div class= "card-body">
             <div class="row justify-content-center p-3">
                 <%= image_tag trip_article.get_image(400,500) %>
             </div>
@@ -32,7 +33,9 @@
               コメント<%= link_to trip_article.comments.count, trip_article_path(trip_article) %>件
             </div>
             <div class="row justify-content-center p-2">
-              <%= trip_article.title %>
+              <div class="card-title">
+                <%= trip_article.title %>
+              </div>
             </div>
             <div class="row justify-content-center pb-2">
               <%= trip_article.text %>
@@ -47,6 +50,8 @@
             <div class="row justify-content-center">
                 <%= link_to 'show', trip_article_path(trip_article) %>
             </div>
+          </div>
+        </div>
       </div>
     </div>
   <% end %>

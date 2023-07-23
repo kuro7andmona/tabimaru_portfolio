@@ -1,13 +1,19 @@
-<h1>User index</h1>
-<table>
-  <tr>
-    <% @users.each do |user| %>
-      <td><%= link_to users_mypage_path(user.id) do %>
-            <%= image_tag user.get_image(30,30) %>
+<h1 class= "row justify-content-center my-5 p-5">User index</h1>
+<div class= "conrainer-md row justify-content-center">
+  <div class="col-10 col-sm-6">
+  <table class= "table table-borderless">
+    <tbody>
+      <% @users.each do |user| %>
+      <tr>
+        <td>
+          <%= link_to users_mypage_path(user.id) do %>
+              <%= image_tag user.get_image(30,30) %>
           <% end %>
-      </td>
-      <td><%= user.nickname %></td>
-      <td><%= user.introduction %></td>
-    <% end %>
-  </tr>
-</table>
+        </td>
+        <td><%= user.nickname %></td>
+        <td><%= user.introduction %></td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
