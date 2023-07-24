@@ -12,19 +12,19 @@
 
 
   <% @trip_articles.each do |trip_article| %>
-    <div class="trip-article-card row justify-content-center pt-4 text-right">
+    <div class="trip-article-card row justify-content-center pt-4">
       <div class="card d-block col-12 col-sm-6">
-          <div class="card-header d-flex align-items-center">
+        <div class="card-header d-flex align-items-center">
             <div class= "rounded-circle h-100">
               <%= image_tag trip_article.user.get_image(60,60), class: "rounded-circle" %>
             </div>
             <p class="m00 pl-2"><%= trip_article.user.nickname %></p>
-          </div>
+        </div>
           <div class= "card-body">
             <div class="row justify-content-center p-3">
                 <%= image_tag trip_article.get_image(400,500) %>
             </div>
-            <div class="row justify-content-center">
+            <div class="row justify-content-center p-2">
                 <% if current_user != trip_article.user %>
                   <div id="like_buttons_<%= trip_article.id %>" >
                     <%= render "public/likes/like", trip_article: trip_article %>

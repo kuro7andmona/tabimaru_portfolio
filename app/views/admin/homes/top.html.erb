@@ -1,5 +1,12 @@
-<h1>管理者</h1>
-<%= link_to 'Log out', destroy_admin_session_path, method: :delete %>
-
-<p><%= link_to 'ユーザー管理', admin_users_path %></p>
-<p><%= link_to '投稿＆コメント管理', admin_comments_path %></p>
+<h2 class= "font-weight-bold text-center p-5 mt-5">管理者</h2>
+<div class="container justify-content-center p-5 ">
+  <div class="row mx-auto">
+    <div class="col-12 text-center">
+       <%= link_to 'ユーザー管理', admin_users_path, class: "font-weight-bold " %>
+        <div class= "col-12 p-5">
+          <%= link_to '投稿＆コメント管理', admin_comments_path, class: "font-weight-bold" %>
+        </div>
+          <%= link_to 'ログアウト', destroy_admin_session_path, method: :delete, class: "font-weight-bold" %>
+    </div>
+  </div>
+</div>

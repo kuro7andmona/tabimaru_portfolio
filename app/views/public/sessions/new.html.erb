@@ -1,4 +1,4 @@
-<h2 class= "font-weight-bold text-center">ログイン</h2>
+<h2 class= "font-weight-bold text-center p-5">ログイン</h2>
 <div class="row justify-content-center">
   <%= form_with model: @user, url: session_path(resource_name) do |f| %>
   <table class= "table table-borderless">
@@ -16,14 +16,14 @@
         <td>
         <% if devise_mapping.rememberable? %>
           <%= f.check_box :remember_me %>
-          <%= f.label :remember_me, "" %>
+          <%= f.label :remember_me, "ログイン情報を保持する" %>
         <% end %>
         </td>
       </tr>
       <tr>
         <th></th>
-        <td><%= f.submit "Log in", class: "btn btn-outline-secondary" %></td>
-        <% end %>
+        <td><%= f.submit "ログイン", class: "btn btn-outline-secondary" %></td>
+  <% end %>
       </tr>
       <tr>
         <th></th>
@@ -32,6 +32,6 @@
         <%= render "public/shared/links" %>
         </td>
       </tr>
-      </tbody>
-    </table>
+    </tbody>
+  </table>
 </div>

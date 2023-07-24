@@ -99,3 +99,12 @@
   /*background-image: image-url("tabimarutop.jpg");*/
   background-size: cover;
 }
+
+card{
+  max-width: 100%;
+    flex-shrink:0;
+}
+
+.trip-article-card .card {
+  padding: 0;
+}

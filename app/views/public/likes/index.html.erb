@@ -16,6 +16,9 @@
              </td>
            <% end %>
               <td><%= link_to trip_article.title, trip_article_path(trip_article) %></td>
+              <td>
+                <%= link_to "削除",  trip_article_like_path(@trip_article.id,like.id), method: :delete, "data-confirm" => "お気に入りを削除しますか？", class: "btn btn-outline-secondary " %>
+              </td>
           <% end %>
         </tr>
         <% else %>

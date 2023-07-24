@@ -1,39 +1,60 @@
-<div class= "conrainer-md">
-  <div class="row justify-content-center pt-4">
-    <%= image_tag @trip_article.user.get_image(30,30) %>
-    <%= @trip_article.user.name %>
-  </div>
-  <div class="row justify-content-center pt-4">
-    <%= image_tag @trip_article.get_image(200,200) %>
-  </div>
-  <div class="row justify-content-center pt-4">
-    <%= @trip_article.title %>
-  </div>
-  <div class="row justify-content-center pt-4">
-    <%= @trip_article.text %>
-  </div>
-  <div class="row justify-content-center pt-4">
-    <%= @trip_article.created_at.strftime('%Y/%m/%d') %>
-  </div>
-
-    <% @trip_article.comments.each do |comment| %>
-     <div class="row justify-content-center pt-4">
-        <p><%= image_tag comment.user.get_image(30,30) %></p>
-        <%= comment.user.nickname %>
-        <%= comment.created_at.strftime('%Y/%m/%d') %><%= comment.comment %>
-        <% if comment.user == current_user %>
-          <%= link_to "削除",  trip_article_comment_path(@trip_article.id,comment.id), method: :delete, "data-confirm" => "コメントを削除しますか？" %>
-        <% end %>
+<div class= "conrainer-md row justify-content-center pt-4">
+  <div class="card d-block col-12 col-sm-6">
+    <div class="card-header d-flex align-items-center w-100">
+        <div class= "rounded-circle h-100">
+          <%= image_tag @trip_article.user.get_image(60,60), class: "rounded-circle" %>
         </div>
-      <% end %>
-  <div class="row justify-content-center pt-4">
-    <%= form_with model: [@trip_article, @comment] do |f| %>
-    <%= f.text_area :comment, rows: '5', placeholder: "コメントをここに" %>
-  </div>
-  <div class="row justify-content-center pt-4">
-      <%= f.submit "送信する" %>
-  </div>
-    <% end %>
-  </div>
+          <p class="m00 pl-2"><%= @trip_article.user.name %></p>
+    </div>
+        <div class= "card-body">
+          <div class="row justify-content-center p-3">
+              <%= image_tag @trip_article.get_image(400,500) %>
+          </div>
+          <div class="row justify-content-center p-2">
+            <%= @trip_article.title %>
+          </div>
+          <div class="row justify-content-center pb-2">
+            <%= @trip_article.text %>
+          </div>
+          <div class="row justify-content-center">
+            <%= @trip_article.created_at.strftime('%Y/%m/%d') %>
+          </div>
+          <div class="comments card-text row justify-content-center">
+            <div class="row" style="width: 100%">
+            <% @trip_article.comments.each do |comment| %>
+            <div class="col-12 pl-5" style="width:100%">
+              <div class="row">
+                <div class="col-12">
+                  <%= image_tag comment.user.get_image(60,60), class: "rounded-circle" %>
+                  <span>
+                     <%= comment.comment %>
+                  </span>
+                </div>
+              </div>
+
+              <div class="row mx-auto">
+                <div class="col-9">
+                   <span class= "pr-3">
+                   <%= comment.user.nickname %>
+                   </span>
+                   <%= comment.created_at.strftime('%Y/%m/%d') %>
+                </div>
+                <div class="col-3 pb-5">
+                  <% if comment.user == current_user %>
+                    <%= link_to "削除",  trip_article_comment_path(@trip_article.id,comment.id), method: :delete, "data-confirm" => "コメントを削除しますか？", class: "btn  btn-outline-danger " %>
+                  <% end %>
+                </div>
+              </div>
+            </div>
+            <% end %>
+          </div>
+            <div class="new-comment card-text col-12 justify-content-center p-5 d-flex">
+              <%= form_with class: "w-100" , model: [@trip_article, @comment] do |f| %>
+                <div class="form-group m-00">
+                  <%= f.text_area :comment, rows: '5', placeholder: "コメントを書こう", class: "form-control w-100" %>
+                </div>
+              <p><%= f.submit "送信する", class: "btn btn-outline-secondary" %></p>
+              <% end %>
+            </div>
 </div>
 

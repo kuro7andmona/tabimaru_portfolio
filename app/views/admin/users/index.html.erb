@@ -1,25 +1,28 @@
-<h1>User index</h1>
-
-<table>
+<h1 class="font-weight-bold text-center p-5">ユーザー一覧</h1>
+<div class="row justify-content-center p-5 ">
+  <%=link_to 'トップ', admin_path , class: "btn btn-outline-secondary "%>
+</div>
+<table class= "table table-border hover">
   <thead>
     <tr>
       <th></th>
-      <th>name</th>
-      <th>nickname</th>
-      <th>e-mail</th>
+      <th>名前</th>
+      <th>ニックネーム</th>
+      <th>メールアドレス</th>
+      <th></th>
     </tr>
   </thead>
   <tbody>
     <tr>
     <% @users.each do |user| %>
-     <td><%= image_tag user.get_image(30,30) %></td>
+    <tr>
+     <td><%= image_tag user.get_image(60,60), class: "rounded-circle" %></td>
      <td><%= user.name %></td>
      <td><%= user.nickname %></td>
      <td><%= user.email %></td>
-     <td><%= link_to '削除', admin_user_path(user),  method: :delete, "data-confirm" => "ユーザーを削除しますか？" %></td>
+     <td><%= link_to '削除', admin_user_path(user),  method: :delete, "data-confirm" => "ユーザーを削除しますか？", class: "btn btn-danger" %></td>
     </tr>
     <% end %>
   </tbody>
 </table>
 
-<%=link_to 'Top', admin_path %>

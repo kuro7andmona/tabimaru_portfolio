@@ -1,4 +1,4 @@
-<h2 class= "font-weight-bold text-center p-5">Sign up</h2>
+<h2 class= "font-weight-bold text-center p-5">新規登録</h2>
   <div class="row justify-content-center">
     <%= form_with model: @user, url: registration_path(resource_name) do |f| %>
       <%= render "public/shared/error_messages", resource: resource %>
@@ -6,15 +6,15 @@
         <tbody>
           <tr>
             <th><%= f.label :name, "名前" %><br/></th>
-            <td><%= f.text_field :name,  placeholder: "name", autofocus: true, autocomplete: "name" %></td>
+            <td><%= f.text_field :name,  placeholder: "名前", autofocus: true, autocomplete: "name" %></td>
           </tr>
           <tr>
             <th><%= f.label :nickname, "ニックネーム" %><br /></th>
-            <td><%= f.text_field :nickname,  placeholder: "nickname", autofocus: true, autocomplete: "nickname" %></td>
+            <td><%= f.text_field :nickname,  placeholder: "ニックネーム", autofocus: true, autocomplete: "nickname" %></td>
           </tr>
           <tr>
               <th><%= f.label :email, "メールアドレス" %><br /></th>
-              <td><%= f.email_field :email, placeholder: "email", autofocus: true, autocomplete: "email" %></td>
+              <td><%= f.email_field :email, placeholder: "メールアドレス", autofocus: true, autocomplete: "email" %></td>
           </tr>
           <tr>
             <th><%= f.label :password, "パスワード" %></th>
@@ -22,16 +22,16 @@
               <% if @minimum_password_length %>
               <em>(<%= @minimum_password_length %> 文字以上)</em>
               <% end %><br />
-            <%= f.password_field :password, placeholder: "password",autocomplete: "new-password" %>
+            <%= f.password_field :password, placeholder: "パスワード",autocomplete: "new-password" %>
             </td>
           </tr>
           <tr>
             <th><%= f.label :password_confirmation, "パスワード確認" %><br /></th>
-            <td><%= f.password_field :password_confirmation, placeholder: "password",autocomplete: "new-password" %></td>
+            <td><%= f.password_field :password_confirmation, placeholder: "パスワード",autocomplete: "new-password" %></td>
           </tr>
           <tr>
             <th></th>
-            <td><%= f.submit "Sign up", class: "btn btn-outline-secondary" %></td>
+            <td><%= f.submit "登録", class: "btn btn-outline-secondary" %></td>
             <% end %>
           </tr>
           <tr>
