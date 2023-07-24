@@ -1,20 +1,32 @@
-
-<h1><%= current_user.nickname %>さんのお気に入り</h1>
-<div>
-<% if @likes.length != 0 %>
-</div>
-  <% @likes.each do |trip_article| %>
-  <div>
-   <% if trip_article.image.present? %>
-    <%= image_tag trip_article.get_image(100,100) %>
-   <% else %>
-     <%= image_tag "no_image.png" %>
-   <% end %>
-      <%= link_to trip_article.title, trip_article_path(trip_article) %>
+<h1 class="text-center m-5 p-5"><%= current_user.nickname %>さんのお気に入り</h1>
+<div class= "conrainer-md row justify-content-center">
+  <div class="col-10 col-sm-6">
+  <% if @likes.length != 0 %>
+  <table class= "table-hover">
+    <tbody>
+      <% @likes.each do |trip_article| %>
+        <tr>
+          <td>
+           <% if trip_article.image.present? %>
+            <%= image_tag trip_article.get_image(100,100) %>
+            </td>
+           <% else %>
+           <td>
+             <%= image_tag "no_image.png" %>
+             </td>
+           <% end %>
+              <td><%= link_to trip_article.title, trip_article_path(trip_article) %></td>
+          <% end %>
+        </tr>
+        <% else %>
+        <td>
+        <div class= "text-center">
+          お気に入り登録はされていません。
+        </div>
+        </td>
   <% end %>
-  </div>
-<% else %>
-お気に入り登録はされていません。
-<% end %>
+    </tbody>
+  </table>
+</div>
 
 
