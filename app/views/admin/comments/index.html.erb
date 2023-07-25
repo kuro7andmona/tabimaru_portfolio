@@ -1,15 +1,18 @@
 <h1 class= "font-weight-bold text-center p-5 mt-5">投稿・コメント管理</h1>
 <div class="row justify-content-center p-5 mt-3 ">
-  <%=link_to 'トップ', admin_path,class: "btn  btn-outline-secondary " %>
+  <%=link_to 'トップ', admin_path,class: "btn  btn-outline-secondary px-5" %>
 </div>
+
     <% @trip_articles.each do |trip_article| %>
     <div class="trip-article-card row justify-content-center pt-4">
       <div class="card d-block col-12 col-sm-6">
         <div class="card-header d-flex align-items-center">
           <div class= "rounded-circle h-100">
-            <%= image_tag trip_article.user.get_image(60,60), class: "rounded-circle" %>
+<% if trip_article.user.present? %>
+            <%= image_tag trip_article.user&.get_image(40,40), class: "rounded-circle" %>
+            <% end %>
           </div>
-          <p class="m00 pl-2"><%= trip_article.user.name %></p>
+          <p class="m00 pl-2"><%= trip_article.user&.name %></p>
         </div>
         <div class= "card-body">
             <div class="row justify-content-center p-3">
@@ -25,7 +28,7 @@
               </div>
               <div class="row justify-content-center pb-2">
                 <%= trip_article.created_at.strftime('%Y/%m/%d') %>
-                <%= link_to "投稿削除", admin_trip_article_path(trip_article.id), method: :delete, "data-confirm" => "投稿を削除しますか？", class: "btn  btn-outline-danger" %>
+                <%= link_to "投稿削除", admin_trip_article_path(trip_article.id), method: :delete, "data-confirm" => "投稿を削除しますか？", class: "btn  btn-outline-danger ml-3" %>
               </div>
               <div class="comments card-text row justify-content-center">
                 <div class="row" style="width: 100%">
@@ -42,22 +45,19 @@
                     <div class="row mx-auto">
                       <div class="col-9">
                         <span class= "pr-3">
-                          <%= comment.user.nickname %>
+                           <%= comment.user.nickname %>
                         </span>
                         <%= comment.created_at.strftime('%Y/%m/%d') %>
                       </div>
                       <div class="col-3 pb-5">
-                        <%= link_to "コメント削除", admin_comment_path(comment.id), method: :delete, "data-confirm" => "コメントを削除しますか？", class: "btn  btn-outline-danger" %>
-                  <% end %>
+                         <%= link_to "コメント削除", admin_comment_path(comment.id), method: :delete, "data-confirm" => "コメントを削除しますか？", class: "btn  btn-outline-danger" %>
+                      </div>
                     </div>
                   </div>
+                  <% end %>
                 </div>
               </div>
-          </div>
+        </div>
       </div>
     </div>
     <% end %>
-
-
-
-

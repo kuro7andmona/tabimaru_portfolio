@@ -2,52 +2,54 @@
   <%= flash[:notice] %>
 </div>
 <div class= "conrainer-md">
-    <h2 class="text-center m-5 p-5">投稿編集</h2>
-    <div class="row justify-content-center pt-4 text-right">
-      <%= form_with model: @trip_artcle, url: trip_article_path(@trip_article.id), method: :patch do |f| %>
-        <%= image_tag @trip_article.user.get_image(30,30) %>
-        <%= @trip_article.user.name %>
-    </div>
-    <div class="row justify-content-center pt-4">
-      <div class= "field">
-        <dl class= "row">
-          <dt class= "col-3">
-            <%= f.label :image, "画像" %>
-          </dt>
-          <dd class="col-9">
-            <%= f.file_field :image, accept: "image/*" %>
-          </dd>
-        </dl>
-      </div>
-    </div>
-    <div class="row justify-content-center pt-4">
-      <div class= "field pr-3">
-        <dl class= "row">
-          <dt class= "col-3">
-            <%= f.label :title, "タイトル" %>
-          </dt>
-          <dd class="col-9">
-            <%= f.text_field :title, placeholder: "タイトル" %>
-          </dd>
-        </dl>
-      </div>
-    </div>
-    <div class="row justify-content-center pt-4">
-      <div class= "field pr-3">
-        <dl class= "row">
-          <dt class= "col-3">
-            <%= f.label :text, "本文" %>
-          </dt>
-          <dd class="col-9">
-            <%= f.text_area :text, placeholder: "本文" %>
-          </dd>
-        </dl>
-      </div>
-    </div>
-    <div class="actions text-center p-3">
-        <%= f.submit '投稿', class: "btn btn-outline-secondary"  %>
-        </div>
-    <% end %>
-    </div>
+  <div class="row justify-content-center pt-4">
+    <h2 class="text-center m-5 p-5 display-4 font-weight-bolder">投稿編集</h2>
   </div>
-</div>
+    <%= form_with model: @trip_article, url: trip_article_path(@trip_article.id), method: :patch do |f| %>
+          <div class="row justify-content-center pt-4">
+              <div class= "field">
+                <%= f.label :image, "画像" %>
+                <%= f.file_field :image, accept: "image/*", value: @trip_article.image %>
+              </div>
+          </div>
+          <div class="row justify-content-center pt-4">
+              <div class= "field mr-5">
+                <dl class= "row">
+                 <dt class= "col-4">
+                  <%= f.label :title, "タイトル" %>
+                  </dt>
+                  <dd class="col-4">
+                     <%= f.text_field :title, placeholder: "タイトル" %>
+                  </dd>
+                </dl>
+              </div>
+          </div>
+          <div class="row justify-content-center pt-4">
+            <div class= "field mr-5">
+              <dl class= "row">
+                <dt class= "col-4">
+                  <%= f.label :text, "本文" %>
+                </dt>
+                <dd class="col-4">
+                  <%= f.text_area :text, placeholder: "本文" %>
+                </dd>
+              </dl>
+            </div>
+          </div>
+        <div class="row justify-content-center pt-4">
+            <div class= "field mr-4">
+              <%= f.label :prefecture_id, "都道府県" %>
+              <%= f.select :prefecture_id, Prefecture.pluck(:name,:id), { include_blank: true, selected: 1 }, { id: "prefecture_id", class: "prefecture_class" } %>
+            </div>
+          <div class= "field pr-3">
+            <%= f.label :season_id, "季節" %>
+            <%= f.select :season_id, Season.pluck(:name, :id), { include_blank: true, selected: 1 }, { id: "season_id", class: "season_class" } %>
+          </div>
+        </div>
+        <div class="actions text-center p-3">
+            <%= f.submit '更新', class: "btn btn-outline-secondary"  %>
+        </div>
+        <% end %>
+
+  </div>
+

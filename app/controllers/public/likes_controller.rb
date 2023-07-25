@@ -2,9 +2,9 @@ class Public::LikesController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    user = User.find(params[:id])
-    likes = Like.where(user_id: user.id).pluck(:trip_article_id)
-    @likes = TripArticle.find(likes)
+    user = current_user
+    trip_article_ids = Like.where(user_id: user.id).pluck(:trip_article_id)
+    @trip_articles = TripArticle.find(trip_article_ids)
   end
 
   def create
@@ -17,14 +17,17 @@ class Public::LikesController < ApplicationController
   end
 
   def destroy
-    @trip_article = TripArticle.find(params[:trip_article_id])
-    like =  current_user.likes.find(params[:id])
-    if like.present?
-      like.destroy
+    trip_article = TripArticle.find(params[:trip_article_id])
+    likes =  current_user.likes.find(params[:id])
+    if trip_article.user != current_user
+      redirect_to likes_path
+    if likes.present?
+      likes.destroy
     else
       redirect_back fallback_location: root_path
     end
   end
+end
 
   private
 

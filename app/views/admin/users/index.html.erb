@@ -1,6 +1,6 @@
 <h1 class="font-weight-bold text-center p-5">ユーザー一覧</h1>
 <div class="row justify-content-center p-5 ">
-  <%=link_to 'トップ', admin_path , class: "btn btn-outline-secondary "%>
+  <%=link_to 'トップ', admin_path , class: "btn btn-outline-secondary px-5 "%>
 </div>
 <table class= "table table-border hover">
   <thead>
@@ -25,4 +25,8 @@
     <% end %>
   </tbody>
 </table>
+
+<div class= " row justify-content-center py-5">
+  <%= paginate @users %>
+</div>
 

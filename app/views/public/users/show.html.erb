@@ -1,27 +1,31 @@
-<h2 class= "text-center m-5 p-5">My page</h2>
-<div class="container px-5 px-sm-0">
-  <h4 class= "p-4 ">ユーザー情報</h4>
-  <%= image_tag current_user.get_image(30,30) %>
-  <table class= "table-table-bordered">
-  <tbody>
-    <tr></tr>
-      <tr>
-        <th class= "pr-3">nickname</th>
-        <th><%= current_user.nickname %></th>
-      </tr>
-      <tr>
-        <th>comment</th>
-        <th><%= current_user.introduction %></th>
-      </tr>
-  </div>
-    <%= flash[:notice] %>
-  </div>
-  <tr>
-    <td class= "pt-4"><%= link_to '編集', edit_user_path(@user) %></td>
-    <td class= "pt-4"><%= link_to 'bookmark', likes_path %></td>
-    </tr>
-  </tbody>
-  </table>
+<h2 class= " text-center m-5 p-5 display-4 font-weight-bolder">My page</h2>
+<div class="container px-5  px-sm-0">
+    <div class="row">
+      <div class= col-md-3>
+        <h4 class= "p-4 ">ユーザー情報</h4>
+        <%= image_tag current_user.get_image(30,30) %>
+        <table class= "table">
+        <tbody>
+          <tr></tr>
+            <tr>
+              <th class= "pr-3">ニックネーム</th>
+              <th><%= current_user.nickname %></th>
+            </tr>
+            <tr>
+              <th>コメント</th>
+              <th><%= current_user.introduction %></th>
+            </tr>
+        </div>
+          <%= flash[:notice] %>
+        </div>
+        <tr>
+          <td><%= link_to '編集', edit_user_path(@user), class: "btn btn-outline-secondary" %></td>
+          <td><%= link_to 'お気に入り', likes_path ,class: "btn btn-outline-secondary"%></td>
+          </tr>
+        </tbody>
+        </table>
+      </div>
+    </div>
 </div>
 
   <% @trip_articles.each do |trip_article| %>
@@ -29,7 +33,7 @@
       <div class="card d-block col-12 col-sm-6">
           <div class="card-header d-flex align-items-center">
             <div class= "rounded-circle h-100">
-              <%= image_tag trip_article.user.get_image(60,60), class: "rounded-circle" %>
+              <%= image_tag trip_article.user.get_image(40,40), class: "rounded-circle" %>
             </div>
             <p class="m00 pl-2"><%= trip_article.user.nickname %>
           </div>
@@ -37,8 +41,10 @@
             <div class="row justify-content-center p-3">
               <%= image_tag trip_article.get_image(400,500) %>
             </div>
+            <div class="col-5 pl-5">
               コメント<%= link_to trip_article.comments.count, trip_article_path(trip_article) %>件
-              <%= link_to 'show', trip_article_path(trip_article) %>
+              <%= link_to '詳細', trip_article_path(trip_article) %>
+            </div>
           </div>
           <div class="row justify-content-center p-2">
             <div class="card-title">
@@ -48,11 +54,15 @@
           <div class="row justify-content-center pb-2">
             <%= trip_article.text %>
           </div>
-          <div class="row justify-content-center">
+          <div class="row justify-content-center p-3">
+            <div class= "col-5 ">
             <%= trip_article.created_at.strftime('%Y/%m/%d') %>
-            <div class= "text-right pl-5 mr-5">
-              <%= link_to 'edit', edit_trip_article_path(trip_article) %>
-              <%= link_to 'delete', trip_article_path(trip_article.id), method: :delete,"data-confirm" =>  "投稿を削除しますか？" %>
+            </div>
+            <div class= "row">
+              <div class= "pr-3 ">
+              <%= link_to '編集', edit_trip_article_path(trip_article),  class: "btn btn-outline-success" %>
+              </div>
+              <%= link_to '削除', trip_article_path(trip_article.id), method: :delete,"data-confirm" =>  "投稿を削除しますか？", class: "btn btn-outline-danger" %>
             </div>
           </div>
   </div>

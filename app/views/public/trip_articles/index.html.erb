@@ -16,7 +16,7 @@
       <div class="card d-block col-12 col-sm-6">
         <div class="card-header d-flex align-items-center">
             <div class= "rounded-circle h-100">
-              <%= image_tag trip_article.user.get_image(60,60), class: "rounded-circle" %>
+              <%= image_tag trip_article.user.get_image(40,40), class: "rounded-circle" %>
             </div>
             <p class="m00 pl-2"><%= trip_article.user.nickname %></p>
         </div>
@@ -47,8 +47,8 @@
             <div class="row justify-content-center">
               <%= trip_article.created_at.strftime('%Y/%m/%d') %>
             </div>
-            <div class="row justify-content-center">
-                <%= link_to 'show', trip_article_path(trip_article) %>
+            <div class="row justify-content-center p-5">
+                <%= link_to '詳細', trip_article_path(trip_article), class: "btn btn-outline-secondary " %>
             </div>
           </div>
         </div>

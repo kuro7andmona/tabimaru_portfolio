@@ -57,16 +57,22 @@ class Public::TripArticlesController < ApplicationController
 
   def edit
     @trip_article = TripArticle.find(params[:id])
-  end
+        redirect_to trip_article_path(@trip_article.id)
+    end
+
 
   def update
-    trip_article = TripArticle.find(params[:id])
+    @trip_article = TripArticle.find(params[:id])
+    if @trip_article.user != current_user
+      redirect_to  trip_article_path(@trip_article)
+    else
     if trip_article.update(trip_article_params)
       flash[:notice] = "編集しました"
-      redirect_to trip_article(@trip_article)
+      redirect_to trip_article_path(@trip_article)
     else
       render :edit
     end
+  end
   end
 
   def search
@@ -78,9 +84,12 @@ class Public::TripArticlesController < ApplicationController
 
   def destroy
     trip_article = TripArticle.find(params[:id])
-    trip_article.destroy
-    redirect_to trip_article(trip_article)
-
+    if trip_article.user != current_user
+      redirect_to   users_mypage_path(user.id)
+    else
+      trip_article.destroy
+    end
+    redirect_to  users_mypage_path(current_user.id)
   end
 
   private

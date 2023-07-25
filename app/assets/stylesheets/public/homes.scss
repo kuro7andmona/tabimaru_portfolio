@@ -9,3 +9,51 @@
   color:#6c6b6b;
 }
 
+.top {
+ background: rgb(131,58,180);
+background: linear-gradient(90deg, rgba(131,58,180,1) 0%, rgba(224,36,65,1) 0%, rgba(253,29,29,1) 38%, rgba(252,250,69,1) 51%, rgba(69,252,165,1) 62%, rgba(101,69,252,1) 64%);
+-webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+/*h1 {
+background: rgb(131,58,180);
+background: linear-gradient(90deg, rgba(131,58,180,1) 0%, rgba(36,51,224,1) 0%, rgba(29,157,253,1) 25%, rgba(69,252,161,1) 35%, rgba(236,252,69,1) 44%, rgba(252,128,69,1) 57%, rgba(252,69,69,1) 65%);
+
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}*/
+
+.introduction {
+  font-size: 20px;
+}
+
+.wrap{
+  padding: 16px;
+}
+#slide_wrap{
+  position: relative;
+  overflow: hidden;
+
+  .slide_item{
+    opacity: 0;
+    transform: scale(1);
+    transition: opacity 2s linear, transform 7.5s linear;  //transformはFadeTime + IntarvalTime + α秒
+    position: relative;
+
+    &:not(:first-child){
+      position: absolute;
+      top: 0;
+      left : 0;
+    }
+
+    &.show_{
+      opacity: 1;
+    }
+    &.zoom_{
+      transform: scale(1.1);
+    }
+    img{
+      display: block; //下に余白できないように
+    }
+  }
+}
