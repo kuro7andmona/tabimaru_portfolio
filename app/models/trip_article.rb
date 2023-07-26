@@ -11,7 +11,7 @@ class TripArticle < ApplicationRecord
 
   validates :title, presence: true
   validates :text, presence:true
-  validates :image, presence: true
+  validates :image, attached: true, content_type: ["image/jpg", "image/jpeg"]
 
   def liked_by(user)
     Like.find_by(user_id: user.id, trip_article_id: id)

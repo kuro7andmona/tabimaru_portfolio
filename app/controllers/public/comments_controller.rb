@@ -8,7 +8,8 @@ class Public::CommentsController < ApplicationController
     if comment.save
     redirect_to trip_article_path(@trip_article)
     else
-      redirect_to root_path
+      flash[:notice] = "空のコメントはできません"
+      redirect_to trip_article_path(@trip_article)
     end
   end
 

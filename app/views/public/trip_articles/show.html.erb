@@ -1,5 +1,5 @@
-<div class= "conrainer-md row justify-content-center pt-4">
-  <div class="card d-block col-12 col-sm-6">
+<div class= "trip_article-card row justify-content-center pt-4">
+  <div class="card d-block col-12 col-sm-6 p-0">
     <div class="card-header d-flex align-items-center">
         <div class= "rounded-circle h-100">
           <%= image_tag @trip_article.user.get_image(60,60), class: "rounded-circle" %>
@@ -52,10 +52,14 @@
             </div>
             <% end %>
           </div>
+
             <div class="new-comment card-text col-12 justify-content-center p-5 d-flex">
               <%= form_with class: "w-100" , model: [@trip_article, @comment] do |f| %>
                 <div class="form-group m-00">
                   <%= f.text_area :comment, rows: '5', placeholder: "コメントを書こう", class: "form-control w-100" %>
+                </div>
+                <div class= "p-3 text-success">
+                  <%= flash[:notice] %>
                 </div>
               <p><%= f.submit "送信する", class: "btn btn-outline-secondary" %></p>
               <% end %>

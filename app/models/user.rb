@@ -5,12 +5,12 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_one_attached :image
-  has_many :trip_articles #旅行記事
+  has_many :trip_articles, dependent: :destroy#旅行記事
   has_many :comments, dependent: :destroy
-  has_many :likes #お気に入り機能
+  has_many :likes, dependent: :destroy#お気に入り機能
 
-  validates :nickname, presence: true
-  validates :name, presence: true
+  validates :nickname, presence: true, length: { minimum: 2 , maximum: 20 }, uniqueness: true
+  validates :name, presence: true, length: { minimum: 2 , maximum: 20 }, uniqueness: true
 
   def get_image(width, height)
     unless image.attached?
@@ -23,8 +23,8 @@ class User < ApplicationRecord
 
   def self.guest
     find_or_create_by!(email: 'guest@guest.mail') do |user|
-      user.name = 'ゲストユーザー'
-      user.nickname = 'ゲストユーザーニックネーム'
+      user.name = 'ゲスト'
+      user.nickname = 'ゲストニックネーム'
       user.password = SecureRandom.urlsafe_base64
     end
   end

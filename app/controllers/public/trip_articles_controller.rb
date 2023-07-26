@@ -25,7 +25,8 @@ class Public::TripArticlesController < ApplicationController
        @trip_articles = TripArticle.all
        @tags = Tag.all
        @user = current_user
-      render :index
+      render :new
+      flash[:notice] = "空投稿はできません！"
     end
   end
 
@@ -57,8 +58,7 @@ class Public::TripArticlesController < ApplicationController
 
   def edit
     @trip_article = TripArticle.find(params[:id])
-        redirect_to trip_article_path(@trip_article.id)
-    end
+  end
 
 
   def update
@@ -66,13 +66,14 @@ class Public::TripArticlesController < ApplicationController
     if @trip_article.user != current_user
       redirect_to  trip_article_path(@trip_article)
     else
-    if trip_article.update(trip_article_params)
-      flash[:notice] = "編集しました"
+    if @trip_article.update(trip_article_params)
+      flash[:notice] = "投稿を編集しました"
       redirect_to trip_article_path(@trip_article)
     else
+      flash[:notice] = "投稿を編集できませんでした"
       render :edit
     end
-  end
+    end
   end
 
   def search

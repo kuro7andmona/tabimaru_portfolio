@@ -1,34 +1,32 @@
 <h1 class="text-center m-5 p-5"><%= current_user.nickname %>さんのお気に入り</h1>
 <div class= "conrainer-md row justify-content-center">
-  <div class="col-10 col-sm-6">
+  <div class="col-10 col-sm-6 pl-5">
     <% if  @trip_articles.length != 0 %>
-      <table class= "table-hover">
         <%  @trip_articles.each do |trip_article| %>
-        <tbody>
-            <tr>
-              <td>
-                <% if trip_article.image.present? %>
-                <%= image_tag trip_article.get_image(100,100) %>
-                <% else %>
-                  <%= image_tag "no_image.png" %>
-                <% end %>
-              </td>
-              <td><%= link_to "#{trip_article.title}", trip_article_path(trip_article) %></td>
-              <td>
-                  <%= link_to "削除",  trip_article_like_path(trip_article.id, trip_article.likes.find_by(user_id:current_user.id).id) , method: :delete, "data-confirm" => "お気に入りを削除しますか？", class: "btn btn-outline-secondary " %>
-              </td>
-            </tr>
-        </tbody>
-      <% end %>
-      </table>
-    <% else %>
+          <div class="recipe-contents d-flex align-items-center">
+            <% if trip_article.image.present? %>
+                <%= image_tag trip_article.get_image(100,100), class: "d-block rounded square" %>
+            <% else %>
+                <%= image_tag "no_image.png",class: "d-block rounded square" %>
+            <% end %>
+            <div class= "like d-flex">
+              <div class="like-title py-5">
+                <%= link_to "#{trip_article.title}", trip_article_path(trip_article), class: "pr-4 col-2" %>
+              </div>
+              <div class="like-content py-5">
+                <%= link_to "削除",  trip_article_like_path(trip_article.id, trip_article.likes.find_by(user_id:current_user.id).id) , method: :delete, "data-confirm" => "お気に入りを削除しますか？", class: "btn btn-outline-danger" %>
+              </div>
 
-            <div class= "text-center">
-              お気に入り登録はされていません。
             </div>
+          </div>
 
-     <% end %>
-  </div>
+      <% end %>
+    <% else %>
+        <div class= "text-center">
+          お気に入り登録はされていません。
+        </div>
+    <% end %>
+
 </div>
 
 

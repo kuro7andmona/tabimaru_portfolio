@@ -4,7 +4,7 @@ class Comment < ApplicationRecord
   belongs_to :user
   belongs_to :trip_article
 
-  #validates :comment, presence: true, length: { maximum: 300 }
+  validates :comment, presence: true, length: { maximum: 300 }
 
   def get_image(width, height)
     unless image.attached?

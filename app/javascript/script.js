@@ -16,15 +16,12 @@ function sliderStart() {
     const IntarvalTime = 5000;                                 //クロスフェードさせるまでの間隔
     let actNum = 0;                                            //現在アクティブな番号
     let nowSlide;                                              //現在表示中のスライド
-    let NextSlide;                                             //次に表示するスライド
-
-    // DOM読み込み時にスライドの1枚目をフェードイン
+    let NextSlide;   
+    
     slideItem[0].classList.add('show_', 'zoom_');
-
-    // 処理を繰り返す
     setInterval(() => {
         if (actNum < totalNum) {
-
+          
             nowSlide = slideItem[actNum];
             NextSlide = slideItem[++actNum];
 
@@ -56,3 +53,4 @@ function sliderStart() {
     }, IntarvalTime);
 
 }
+
