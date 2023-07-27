@@ -61,8 +61,6 @@ gem 'image_processing', '~> 1.2'
 
 gem 'kaminari','~> 1.2.1'
 
-gem 'active_hash', '~> 3.0.0'
-
 gem 'jquery-rails'
 
 gem 'dotenv-rails'
@@ -70,8 +68,10 @@ group :production do
   gem 'mysql2'
 end
 
+gem 'active_storage_validations'
+
 gem "net-smtp"
 gem "net-pop"
 gem "net-imap"
 
-gem 'active_storage_validations'
+
