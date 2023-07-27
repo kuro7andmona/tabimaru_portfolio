@@ -1,20 +1,20 @@
 <h1 class= "row justify-content-center mt-5 p-5 display-4 font-weight-bolder">ユーザー一覧</h1>
 <div class="container px-5  px-sm-0">
-<div class= "conrainer-md row justify-content-center">
-  <div class="col-10">
-  <table class= "table table">
-    <tbody>
-      <% @users.each do |user| %>
-      <tr>
-        <td>
-          <%#= link_to  users_mypage_path(user.id) do %>
-          <%= image_tag user.get_image(40,40), class: "rounded-circle" %>
-          <%# end %>
-        </td>
-        <td><%= user.nickname %></td>
-        <td><%= user.introduction %></td>
-      </tr>
-      <% end %>
-    </tbody>
-  </table>
+  <div class= "conrainer-md row justify-content-center">
+    <div class="col-10">
+      <table class= "table table">
+        <tbody>
+          <% @users.each do |user| %>
+          <tr>
+            <td>
+              <%= image_tag user.get_image(40,40), class: "rounded-circle" %>
+            </td>
+            <td><%= user.nickname %></td>
+            <td><%= user.introduction %></td>
+          </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
 </div>
