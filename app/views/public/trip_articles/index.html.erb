@@ -1,9 +1,8 @@
-<div>
-  <%= flash[:notice] %>
-</div>
-
 <h2 class="text-center m-5 p-5">あなたの素敵な旅の思い出を共有しましょう</h2>
 <div class= "text-center m-5">
+  <div class="text-center p-5 text-danger">
+  <%= flash[:notice] %>
+</div>
   <%= render "public/searches/searches" %>
 </div>
 <div class="text-center mx-auto">

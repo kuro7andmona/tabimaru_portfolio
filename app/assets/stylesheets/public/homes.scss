@@ -16,40 +16,24 @@ background: linear-gradient(90deg, rgba(131,58,180,1) 0%, rgba(224,36,65,1) 0%, 
   -webkit-text-fill-color: transparent;
 }
 
-// .introduction {
-//   opacity: 0.5;
-//   color: white;
+ .introduction {
+   opacity: 0.5;
+   color: white;
 
+ }
+
+// .swiper {
+//   width: 600px;
+//   height: 300px;
 // }
-
-.wrap{
-  padding: 16px;
-}
-#slide_wrap{
-  position: relative;
-  overflow: hidden;
-
-  .slide_item{
-    opacity: 0;
-    transform: scale(1);
-    transition: opacity 2s linear, transform 7.5s linear;  //transformはFadeTime + IntarvalTime + α秒
-    position: relative;
-
-    &:not(:first-child){
-      position: absolute;
-      top: 0;
-      left : 0;
-    }
-
-    &.show_{
-      opacity: 1;
-    }
-    &.zoom_{
-      transform: scale(1.1);
-    }
-    img{
-      display: block; //下に余白できないように
-    }
-  }
-}
-
+// .p-swiper-container{
+//   position: relative;
+// }
+// .swiper-slide {
+//     background-position: center center;
+//     background-size: cover;
+//     background-repeat: no-repeat;
+//     height: 60vh;
+//     overflow: hidden;
+//     backface-visibility: hidden;
+// }

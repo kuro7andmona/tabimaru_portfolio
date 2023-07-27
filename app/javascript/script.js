@@ -16,41 +16,6 @@ function sliderStart() {
     const IntarvalTime = 5000;                                 //クロスフェードさせるまでの間隔
     let actNum = 0;                                            //現在アクティブな番号
     let nowSlide;                                              //現在表示中のスライド
-    let NextSlide;   
-    
-    slideItem[0].classList.add('show_', 'zoom_');
-    setInterval(() => {
-        if (actNum < totalNum) {
-          
-            nowSlide = slideItem[actNum];
-            NextSlide = slideItem[++actNum];
-
-            //.show_削除でフェードアウト
-            nowSlide.classList.remove('show_');
-            // と同時に、次のスライドがズームしながらフェードインする
-            NextSlide.classList.add('show_', 'zoom_');
-            //フェードアウト完了後、.zoom_削除
-            setTimeout(() => {
-                nowSlide.classList.remove('zoom_');
-            }, FadeTime);
-
-
-        } else {
-
-            nowSlide = slideItem[actNum];
-            NextSlide = slideItem[actNum = 0];
-
-            //.show_削除でフェードアウト
-            nowSlide.classList.remove('show_');
-            // と同時に、次のスライドがズームしながらフェードインする
-            NextSlide.classList.add('show_', 'zoom_');
-            //フェードアウト完了後、.zoom_削除
-            setTimeout(() => {
-                nowSlide.classList.remove('zoom_');
-            }, FadeTime);
-
-        };
-    }, IntarvalTime);
+    let NextSlide;
 
 }
-

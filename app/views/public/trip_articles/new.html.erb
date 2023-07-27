@@ -1,10 +1,11 @@
-<div>
-  <%= flash[:notice] %>
-</div>
+
 <div class= "conrainer-md">
   <div class="row justify-content-center pt-4">
     <h2>新規投稿</h2>
-    </div>
+  </div>
+  <div class="text-center text-danger">
+    <%= flash[:notice] %>
+  </div>
     <%= form_with model: @trip_article, method: :post do |f| %>
 
   <div class="row justify-content-center pt-4 text-right">

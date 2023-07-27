@@ -12,6 +12,8 @@ import "bootstrap";
 import "../stylesheets/application";
 import "script.js"
 import '@fortawesome/fontawesome-free/js/all'
+import '..stylesheets/'
 
 Rails.start()
 ActiveStorage.start()
+

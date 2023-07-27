@@ -19,7 +19,9 @@
           <%= flash[:notice] %>
         </div>
         <tr>
+          <% if @new_user == current_user %>
           <td><%= link_to '編集', edit_user_path(@user), class: "btn btn-outline-secondary" %></td>
+          <% end %>
           <td><%= link_to 'お気に入り', likes_path ,class: "btn btn-outline-secondary"%></td>
           </tr>
         </tbody>

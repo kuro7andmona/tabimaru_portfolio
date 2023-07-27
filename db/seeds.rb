@@ -76,6 +76,19 @@ seasons = season_names.map do |name|
   Season.create!(name: name)
 end
 
+User.create!([
+  {name: "国内太郎", nickname: "こくた", email: "kokunai@taro", password: "354114", introduction: "国内放浪中" },
+  {name: "東北県太", nickname: "けん", email: "touhoku@kenta", password: "354114", introduction: "東北が好きです" },
+  {name: "北海道智子", nickname: "みっちゃん", email: "hokkai@mitiko", password: "354114", introduction: "海が好きです" },
+  {name: "九州京子", nickname: "ピカ子", email: "kyusyuu@kyoko", password: "354114", introduction: "明太子love" },
+  {name: "四国たかし", nickname: "たかちゃん", email: "sikoku@takasi", password: "354114", introduction: "趣味は釣りです" },
+  {name: "沖縄花子", nickname: "hana", email: "okinawa@hanako", password: "354114", introduction: "マリンスポーツが趣味です" }
+  
+])
+
+Trip_article.create!([
+  {user_id: 1, tag_id:}
+  ])
 if Rails.env.development?
   file_path = Rails.root.join('app/assets/images/no_image.jpg')
 

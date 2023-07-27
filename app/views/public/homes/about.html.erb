@@ -1,6 +1,6 @@
-
+<div class="jumbotron jumbotron-extend aboutContainer">
   <div class= "top text-center font-weight-bold display-1 p-5 mt-5">Tabi★Maru</div>
-    <div class= "introduction text-center lead  col-12 py-5 my-5">
+    <div class= "introduction text-center lead bg-dark col-12 py-5 my-5">
     tabimaruは
     旅の仲間と丸くつながる
     国内旅行好きが集まる。<br>コミュニティーサイトです.
@@ -10,13 +10,11 @@
     訪れた素敵な場所や食べ歩きした場所などを写真と共に投稿してみましょう。
     </div>
 
-  <div class="wrap">
-  <ul id="slide_wrap">
-    <li class="slide_item">
-      <li class="slide_item"><% img tag "spring.jpg" %></li>
-      <li class="slide_item"><% img tag "asset/img/summer.jpg" %></li>
-      <li class="slide_item"><% img tag "asset/img/autum.jpg" %></li>
-      <li class="slide_item"><% img tag "asset/img/winter.jpg" %></li>
-    </li>
-  </ul>
+  <style>
+    .aboutContainer {
+      background-image: url("<%= asset_path("summer.jpg") %>");
+      background-size: 100% 100%;
+    }
+  </style>
+  </div>
 </div>
