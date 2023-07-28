@@ -3,7 +3,7 @@
   <div class="col-10 col-sm-6 pl-5">
     <% if  @trip_articles.length != 0 %>
         <%  @trip_articles.each do |trip_article| %>
-          <div class="recipe-contents d-flex align-items-center">
+          <div class="like-contents d-flex align-items-center">
             <% if trip_article.image.present? %>
                 <%= image_tag trip_article.get_image(100,100), class: "d-block rounded square" %>
             <% else %>
@@ -16,7 +16,6 @@
               <div class="like-content py-5">
                 <%= link_to "削除",  trip_article_like_path(trip_article.id, trip_article.likes.find_by(user_id:current_user.id).id) , method: :delete, "data-confirm" => "お気に入りを削除しますか？", class: "btn btn-outline-danger" %>
               </div>
-
             </div>
           </div>
       <% end %>
@@ -25,6 +24,7 @@
           お気に入り登録はされていません。
         </div>
     <% end %>
+    <footer></footer>
 </div>
 
 
