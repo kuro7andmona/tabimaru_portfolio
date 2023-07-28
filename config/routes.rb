@@ -21,7 +21,7 @@ Rails.application.routes.draw do
     get 'users/mypage/:id' => 'users#show', as: 'users_mypage'
     get 'users/:id/edit' => 'users#edit', as: 'edit_user'
     patch 'users/:id' => 'users#update', as: 'update_user'
-
+    get 'users/other_user/:id' => 'users#other_user', as: 'other_user'
     resources :trip_articles do
       resources :comments, only: [:create, :destroy]
       resources :likes, only: [:create, :destroy]

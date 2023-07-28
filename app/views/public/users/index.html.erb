@@ -7,7 +7,9 @@
           <% @users.each do |user| %>
           <tr>
             <td>
-              <%= image_tag user.get_image(40,40), class: "rounded-circle" %>
+              <%= link_to other_user_path(@users) do %>
+                <%= image_tag user.get_image(40,40), class: "rounded-circle" %>
+              <% end %>
             </td>
             <td><%= user.nickname %></td>
             <td><%= user.introduction %></td>

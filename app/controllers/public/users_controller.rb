@@ -17,6 +17,21 @@ class Public::UsersController < ApplicationController
     @users = current_user
     @user = User.find(params[:id])
     @trip_articles = @user.trip_articles
+    @tags = Tag.all
+    @trip_articles = @trip_articles.where("text LIKE ? ",'%' + params[:search] + '%') if params[:search].present?
+    if params[:tag_ids].present?
+        trip_article_ids = []
+        params[:tag_ids].each do |key, value|
+            if value == "1"
+            Tag.find_by(name: key).posts.each do |p|
+            trip_article_ids << p.id
+            end
+            end
+        end
+    end
+
+    @trip_articles = @trip_articles.where(id: trip_article_ids) if trip_article_ids.present?
+
   end
 
   def edit
@@ -27,6 +42,11 @@ class Public::UsersController < ApplicationController
     @user = User.find(params[:id])
     @user.update(user_params)
     redirect_to users_mypage_path(@user)
+  end
+
+  def other_user
+   @user = User.find(params[:id])
+   @trip_articles = @user.trip_articles
   end
 
   private

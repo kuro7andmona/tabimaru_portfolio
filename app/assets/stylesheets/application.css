@@ -135,3 +135,9 @@ card{
   padding: 0;
 }
 
+
+
+textarea {
+width: 250px;
+height: 10em;
+}
