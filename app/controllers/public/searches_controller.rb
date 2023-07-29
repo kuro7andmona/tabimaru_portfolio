@@ -14,7 +14,6 @@ class Public::SearchesController < ApplicationController
     end
     @trip_articles = @trip_articles.where("#{params[:model_name]}_id": models.ids) if params[:keyword].present? 
     @trip_articles = @trip_articles.page(params[:page])
-     flash[:notice] = "検索失敗しました"
     render 'public/trip_articles/index'
     
     

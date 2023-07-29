@@ -3,11 +3,6 @@ class Public::UsersController < ApplicationController
   before_action :ensure_guest_user, only: [:edit]
 
 
-  def ensure_guest_user
-    if resource.email == 'guest@guest.mail'
-    redirect_to user_path(@user.id), notice: 'ゲストユーザーは編集できません'
-    end
-  end
 
   def index
     @users = User.all
@@ -40,8 +35,11 @@ class Public::UsersController < ApplicationController
 
   def update
     @user = User.find(params[:id])
-    @user.update(user_params)
-    redirect_to users_mypage_path(@user)
+    if @user.update(user_params)
+      redirect_to users_mypage_path(@user)
+    else
+      render :edit
+    end
   end
 
   def other_user

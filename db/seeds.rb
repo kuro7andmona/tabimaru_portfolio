@@ -95,7 +95,7 @@ TripArticle.create!([
   },
   {user_id: 6, prefecture_id: 2, season_id: 3, title: "十和田市現代美術館", text: "イケてる青森のアートが見れる。", image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/aomorib-uma.jpg"),filename: "aomorib-uma.jpg")
   },
-  {user_id: 1, prefecture_id: 48, season_id: 3, title: "苔アート", text: "一度見る価値あり！", image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/kokeart.jpg"),filename: "kokeart.jpg")
+  {user_id: 1, prefecture_id: 46, season_id: 3, title: "苔アート", text: "一度見る価値あり！", image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/kokeart.jpg"),filename: "kokeart.jpg")
   },
   {user_id: 2, prefecture_id: 10, season_id: 2, title: "土合駅", text: "めっちゃモグラの駅", image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/doai.jpg"),filename: "doai.jpg")
   },

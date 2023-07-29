@@ -10,7 +10,7 @@ class TripArticle < ApplicationRecord
   # has_many :tags, through: :association_post_and_tags
 
   validates :title, presence: true
-  validates :text, presence:true
+  validates :text, presence: true
   validates :image, attached: true, content_type: ["image/jpg", "image/jpeg"]
 
   def liked_by(user)

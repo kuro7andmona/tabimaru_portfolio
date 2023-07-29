@@ -1,7 +1,7 @@
-<h2 class= " text-center m-5 p-5 display-4 font-weight-bolder">M</h2>
+<h2 class= " text-center m-5 p-5 display-4 font-weight-bolder"></h2>
 <div class="container px-5  px-sm-0">
-    <div class="row">
-      <div class= col-md-3>
+    <div class="row justify-content-center">
+      <div class= col-md-6>
         <h4 class= "p-4 ">ユーザー情報</h4>
         <%= image_tag current_user.get_image(60,60) %>
         <table class= "table">
@@ -9,20 +9,19 @@
           <tr></tr>
             <tr>
               <th class= "pr-3">ニックネーム</th>
-              <th><%= current_user.nickname %></th>
+              <th><%= @user.nickname %></th>
             </tr>
             <tr>
               <th>コメント</th>
-              <th><%= current_user.introduction %></th>
+              <th><%= @user.introduction %></th>
             </tr>
         </div>
           <%= flash[:notice] %>
         </div>
         <tr>
-          <% if @new_user == current_user %>
+          <% if @user == current_user && !current_user.guest_user? %>
           <td><%= link_to '編集', edit_user_path(@user), class: "btn btn-outline-secondary" %></td>
           <% end %>
-          <td><%= link_to 'お気に入り', likes_path ,class: "btn btn-outline-secondary"%></td>
           </tr>
         </tbody>
         </table>
@@ -30,37 +29,47 @@
     </div>
 </div>
 
-  <% @trip_articles.each do |trip_article| %>
-    <div class="trip-article-card row justify-content-center pt-4 ">
+   <% @trip_articles.each do |trip_article| %>
+    <div class="trip-article-card row justify-content-center pt-4">
       <div class="card d-block col-12 col-sm-6">
-          <div class="card-header d-flex align-items-center">
+        <div class="card-header d-flex align-items-center">
             <div class= "rounded-circle h-100">
               <%= image_tag trip_article.user.get_image(30,30), class: "rounded-circle" %>
             </div>
-            <p class="m00 pl-2"><%= trip_article.user.nickname %>
-          </div>
+            <p class="m00 pl-2"><%= trip_article.user.nickname %></p>
+        </div>
           <div class= "card-body">
             <div class="row justify-content-center p-3">
-              <%= image_tag trip_article.get_image(400,500) %>
+                <%= image_tag trip_article.get_image(400,500) %>
             </div>
-            <div class="col-5 pl-5">
+            <div class="row justify-content-center p-2">
+                <% if current_user != trip_article.user %>
+                  <div id="like_buttons_<%= trip_article.id %>" >
+                    <%= render "public/likes/like", trip_article: trip_article %>
+                  </div>
+                <% end %>
               コメント<%= link_to trip_article.comments.count, trip_article_path(trip_article) %>件
-              <%= link_to '詳細', trip_article_path(trip_article) %>
+            </div>
+            <div class="row justify-content-center p-2">
+              <div class="card-title">
+                <%= trip_article.title %>
+              </div>
+            </div>
+            <div class="row justify-content-center pb-2">
+              <%= trip_article.text %>
+            </div>
+            <div class="row justify-content-center p-4">
+              <i class="fas fa-map-marker-alt"></i><%= trip_article.prefecture.name %>
+              <i class="fas fa-tag"></i><%= trip_article.season.name %>
+            </div>
+            <div class="row justify-content-center">
+              <%= trip_article.created_at.strftime('%Y/%m/%d') %>
+            </div>
+            <div class="row justify-content-center p-5">
+                <%= link_to '詳細', trip_article_path(trip_article), class: "btn btn-outline-secondary " %>
             </div>
           </div>
-          <div class="row justify-content-center p-2">
-            <div class="card-title">
-              <%= trip_article.title %>
-            </div>
-          </div>
-          <div class="row justify-content-center pb-2">
-            <%= trip_article.text %>
-          </div>
-          <div class="row justify-content-center p-3">
-            <div class= "col-5 ">
-            <%= trip_article.created_at.strftime('%Y/%m/%d') %>
-            </div>
-          </div>
+        </div>
       </div>
     </div>
   <% end %>

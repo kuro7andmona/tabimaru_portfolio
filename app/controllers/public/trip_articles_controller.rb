@@ -26,7 +26,6 @@ class Public::TripArticlesController < ApplicationController
        @tags = Tag.all
        @user = current_user
       render :new
-      flash[:notice] = "空投稿はできません！"
     end
   end
 
@@ -70,7 +69,6 @@ class Public::TripArticlesController < ApplicationController
       flash[:notice] = "投稿を編集しました"
       redirect_to trip_article_path(@trip_article)
     else
-      flash[:notice] = "投稿を編集できませんでした"
       render :edit
     end
     end

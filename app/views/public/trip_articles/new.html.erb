@@ -3,6 +3,18 @@
   <div class="row justify-content-center pt-4">
     <h2>新規投稿</h2>
   </div>
+  <div class="row justify-content-center pt-4 text-danger">
+      <% if @trip_article.errors.any? %>
+        <%= @trip_article.errors.count %>件のエラーが発生しました
+  </div>
+  <div class="text-center pt-4">
+        <ul>
+        <% @trip_article.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+        </ul>
+  </div>
+        <% end %>
   <div class="text-center text-danger">
     <%= flash[:notice] %>
   </div>

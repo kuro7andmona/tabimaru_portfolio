@@ -5,6 +5,18 @@
   <div class="row justify-content-center pt-4">
     <h2 class="text-center m-5 p-5 display-4 font-weight-bolder">投稿編集</h2>
   </div>
+  <div class="row justify-content-center pt-4 text-danger">
+      <% if @trip_article.errors.any? %>
+        <%= @trip_article.errors.count %>件のエラーが発生しました
+  </div>
+  <div class="text-center pt-4 text-danger">
+        <ul>
+        <% @trip_article.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+      <% end %>
+        </ul>
+        <% end %>
+  </div>
     <%= form_with model: @trip_article, url: trip_article_path(@trip_article.id), method: :patch do |f| %>
           <div class="row justify-content-center pt-4">
               <div class= "field">
@@ -39,11 +51,11 @@
         <div class="row justify-content-center pt-4">
             <div class= "field mr-4">
               <%= f.label :prefecture_id, "都道府県" %>
-              <%= f.select :prefecture_id, Prefecture.pluck(:name,:id), { include_blank: true, selected: 1 }, { id: "prefecture_id", class: "prefecture_class" } %>
+              <%= f.select :prefecture_id, Prefecture.pluck(:name,:id), { include_blank: true, selected: (@trip_article.prefecture_id || 1) }, { id: "prefecture_id", class: "prefecture_class" } %>
             </div>
           <div class= "field pr-3">
             <%= f.label :season_id, "季節" %>
-            <%= f.select :season_id, Season.pluck(:name, :id), { include_blank: true, selected: 1 }, { id: "season_id", class: "season_class" } %>
+            <%= f.select :season_id, Season.pluck(:name, :id), { include_blank: true, selected: (@trip_article.season_id) }, { id: "season_id", class: "season_class" } %>
           </div>
         </div>
         <div class="actions text-center p-3">

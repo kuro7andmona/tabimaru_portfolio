@@ -1,12 +1,11 @@
 <h2 class= " text-center m-5 p-5 display-4 font-weight-bolder">My page</h2>
 <div class="container px-5  px-sm-0">
     <div class="row">
-      <div class= col-md-3>
-        <h4 class= "p-4 ">ユーザー情報</h4>
+      <div class="col-md-6">
+        <h4 >ユーザー情報</h4>
         <%= image_tag current_user.get_image(60,60) %>
         <table class= "table">
         <tbody>
-          <tr></tr>
             <tr>
               <th class= "pr-3">ニックネーム</th>
               <td><%= current_user.nickname %></td>
@@ -19,8 +18,7 @@
           <%= flash[:notice] %>
         </div>
         <tr>
-          <th></th>
-          <% if @new_user == current_user %>
+          <% if @user == current_user && !current_user.guest_user? %>
           <td><%= link_to '編集', edit_user_path(@user), class: "btn btn-outline-secondary" %></td>
           <% end %>
           <td><%= link_to 'お気に入り', likes_path ,class: "btn btn-outline-info"%></td>
@@ -30,6 +28,7 @@
       </div>
     </div>
 </div>
+
 
   <% @trip_articles.each do |trip_article| %>
     <div class="trip-article-card row justify-content-center pt-4 ">
