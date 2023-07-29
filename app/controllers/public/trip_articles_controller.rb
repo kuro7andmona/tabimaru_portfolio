@@ -1,7 +1,5 @@
 class Public::TripArticlesController < ApplicationController
  before_action :authenticate_user!
- before_action :ensure_guest_user, only: [:create, :edit, :destroy]
-
 
   def new
     @trip_article = TripArticle.new
@@ -94,8 +92,5 @@ class Public::TripArticlesController < ApplicationController
   def trip_article_params
     params.require(:trip_article).permit(:title, :text, :image, :user_id, :comment_id, :like, :prefecture_id, :season_id)
   end
-
-def ensure_guest_user
-end
 
 end

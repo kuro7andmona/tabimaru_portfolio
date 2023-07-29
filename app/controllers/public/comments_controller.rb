@@ -24,4 +24,5 @@ class Public::CommentsController < ApplicationController
     params.require(:comment).permit(:comment, :trip_article, :user_id)
   end
 
+
 end

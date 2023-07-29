@@ -18,7 +18,7 @@
   <div class="text-center text-danger">
     <%= flash[:notice] %>
   </div>
-    <%= form_with model: @trip_article, method: :post do |f| %>
+    <%= form_with class: "w-100", model: @trip_article, method: :post do |f| %>
 
   <div class="row justify-content-center pt-4 text-right">
     <div class= "field">
@@ -29,6 +29,7 @@
         <dd class="col-4">
           <%= f.file_field :image, accept: "image/*" %>
         </dd>
+      </dl>
     </div>
   </div>
   <div class="row justify-content-center pt-4">
@@ -38,19 +39,19 @@
         <%= f.label :title, "タイトル" %>
         </dt>
         <dd class="col-4 w-50">
-          <%= f.text_field :title %>
+          <%= f.text_field :title, placeholder: "タイトル" %>
         </dd>
       </dl>
     </div>
   </div>
-  <div class="row justify-content-center pt-4">
+  <div class="row justify-content-center pl-5 ml-5">
     <div class= "field mr-5">
       <dl class= "row">
-        <dt class= "col-4">
+        <dt class= "col-2">
           <%= f.label :text, "本文" %>
         </dt>
         <dd class="col-4">
-          <%= f.text_area :text  %>
+          <%= f.text_area :text , placeholder: "本文", class: "h-100", size: "60×60", maxlength: 100 %>
         </dd>
       </dl>
     </div>
@@ -66,7 +67,7 @@
     </div>
   </div>
   <div class="actions text-center p-3">
-    <%= f.submit '投稿', class: "btn btn-outline-secondary"  %>
+      <%= f.submit '投稿', class: "btn btn-outline-secondary"  %>
+      <% end %>
   </div>
-  <% end %>
 </div>
