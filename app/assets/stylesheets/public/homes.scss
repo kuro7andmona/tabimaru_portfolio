@@ -21,3 +21,58 @@
    color: white;
 
  }
+
+.slider {
+  width: 500px;
+  height: 50px;
+  background-image: 100% ,100%;
+}
+
+#slide_wrap{
+  position: relative;
+  overflow: hidden;
+
+  .slide_item{
+    opacity: 0;
+    transform: scale(1);
+    transition: opacity 2s linear, transform 7.5s linear;  //transformはFadeTime + IntarvalTime + α秒
+    position: relative;
+
+    &:not(:first-child){
+      position: absolute;
+      top: 0;
+      left : 0;
+    }
+
+    &.show_{
+      opacity: 1;
+    }
+    &.zoom_{
+      transform: scale(1.1);
+    }
+    img{
+      display: block; //下に余白できないように
+    }
+  }
+}
+
+.slide {
+  top: 0;
+  left: 0;
+  z-index: -9999;
+}
+
+@keyframes zoomUp {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.15);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+.img {
+  animation: zoomUp 30s linear 0s infinite;  /* FIXME: 秒数調整 */
+}
