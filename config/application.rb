@@ -10,6 +10,10 @@ module TabimaruPortfolio
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 6.1
+    # devise日本語化
+    config.i18n.default_locale = :ja
+    # 日本語化したymlファイルを読み込む
+    config.i18n.load_path += Dir[Rails.root.join('config', 'locales', '**', '*.yml').to_s]
 
     # Configuration for the application, engines, and railties goes here.
     #
