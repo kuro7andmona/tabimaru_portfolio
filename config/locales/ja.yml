@@ -8,4 +8,8 @@ ja:
         nickname: "ニックネーム"
         email: "メールアドレス"
         password: "パスワード"
+      trip_article:
+        title: "タイトル"
+        text: "本文"
+        image: "画像"
 
