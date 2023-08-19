@@ -5,7 +5,7 @@ class Public::UsersController < ApplicationController
 
 
   def index
-    @users = User.all
+    @users = User.page(params[:page])
   end
 
   def show
