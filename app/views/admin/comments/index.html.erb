@@ -1,5 +1,5 @@
 <h1 class= "font-weight-bold text-center p-5 mt-5">投稿・コメント管理</h1>
-<div class="row justify-content-center p-5 mt-3 ">
+<div class="d-flex justify-content-center p-5 mt-3 ">
   <%=link_to 'トップ', admin_path,class: "btn  btn-outline-secondary px-5" %>
 </div>
 
@@ -12,7 +12,7 @@
             <%= image_tag trip_article.user&.get_image(40,40), class: "rounded-circle" %>
             <% end %>
           </div>
-          <p class="m00 pl-2"><%= trip_article.user&.name %></p>
+          <p class="m00 pl-2"><%= trip_article.user.name %></p>
         </div>
         <div class= "card-body">
             <div class="row justify-content-center p-3">
