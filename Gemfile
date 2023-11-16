@@ -65,7 +65,7 @@ gem 'jquery-rails'
 
 gem 'dotenv-rails'
 group :production do
-  gem 'mysql2'
+  gem 'mysql2' , '~> 0.5.5'
 end
 
 gem 'active_storage_validations'
@@ -78,4 +78,5 @@ gem "net-smtp"
 gem "net-pop"
 gem "net-imap"
 
+gem 'shared-mime-info', '~> 0.2.5'
 
